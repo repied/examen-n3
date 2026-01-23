@@ -1,6 +1,6 @@
-# Emprunt
+# Examen-N3
 
-A simple mortgage simulation app built with HTML, CSS, and JavaScript.
+A simple HTML+JJS+CSS flashcard game to study French N3 diving exam.
 
 ## Develop in Devcontainer (vscode)
 
