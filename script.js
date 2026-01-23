@@ -5,7 +5,8 @@ async function initApp() {
     const cardElement = document.getElementById('card');
     const frontText = document.getElementById('front-text');
     const backText = document.getElementById('back-text');
-    const progress = document.getElementById('progress');
+    const cardIndexInput = document.getElementById('cardIndexInput');
+    const totalCardsSpan = document.getElementById('totalCards');
 
     // 1. Fetch the content
     try {
@@ -70,16 +71,26 @@ async function initApp() {
             const currentCard = cards[currentIndex];
             frontText.innerHTML = currentCard.q;
             backText.innerHTML = currentCard.a;
-            
+
             // Reset scroll position to top for both faces
             frontText.scrollTop = 0;
             backText.scrollTop = 0;
-            
-            progress.innerText = `Card ${currentIndex + 1} of ${cards.length}`;
+
+            cardIndexInput.value = currentIndex + 1;
+            totalCardsSpan.innerText = cards.length;
         }, 200);
     }
 
     // 5. Event Listeners
+    cardIndexInput.addEventListener('change', () => {
+        let val = parseInt(cardIndexInput.value);
+        if (isNaN(val)) return;
+        if (val < 1) val = 1;
+        if (val > cards.length) val = cards.length;
+        currentIndex = val - 1;
+        updateCard();
+    });
+
     cardElement.addEventListener('click', () => {
         cardElement.classList.toggle('is-flipped');
     });

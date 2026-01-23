@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashcard App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>Flashcard Study</h1>
-    <div class="progress" id="progress">Card 1 of 3</div>
+    <h1>Examen N3</h1>
+    <div class="progress" id="progress">
+        Card <input type="number" id="cardIndexInput" min="1" value="1" style="width: 50px; text-align: center; border: 1px solid #ccc; border-radius: 4px; font-size: inherit; color: inherit; background: transparent;"> of <span id="totalCards">0</span>
+    </div>
 
     <div class="scene">
         <div class="card" id="card">
@@ -19,7 +20,7 @@
             <div class="card__face card__face--back" id="back-text">...</div>
         </div>
     </div>
-    <div style="margin-top: 10px; font-size: 0.8rem; color: #888;">(Click card to flip)</div>
+    <div style="margin-top: 10px; font-size: 0.8rem; color: #888;">(Source: Plongée Plaisir. Click card to flip)</div>
 
     <div class="controls">
         <button id="prevBtn">Previous</button>
