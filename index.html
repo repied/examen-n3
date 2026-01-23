@@ -10,6 +10,12 @@
 
 <body>
 
+    <div style="position: absolute; top: 20px; right: 20px;">
+        <button id="themeToggle" style="padding: 8px; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid var(--primary); background: var(--card-bg); color: var(--text);">
+            <span id="themeIcon">🌙</span>
+        </button>
+    </div>
+
     <h1>Examen N3</h1>
     <div class="progress" id="progress">
         Question <input type="number" id="cardIndexInput" min="1" value="1"
@@ -34,7 +40,7 @@
     </div>
 
     <div style="margin-top: 20px;">
-        <button id="filterBtn" style="background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;">Questions importantes</button>
+        <button id="filterBtn">Questions importantes</button>
     </div>
 
     <script src="script.js"></script>
