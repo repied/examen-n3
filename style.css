@@ -68,7 +68,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Changed from center to allow scrolling from the top */
     text-align: center;
     padding: 30px;
     box-sizing: border-box;
@@ -79,6 +79,13 @@ h1 {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     /* Smooth scrolling on iOS */
+}
+
+/* Vertically center content when it's short, but allow scrolling from top when long */
+.card__face::before,
+.card__face::after {
+    content: '';
+    margin: auto;
 }
 
 /* Custom scrollbar for better visibility on long answers */
