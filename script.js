@@ -62,7 +62,7 @@ async function initApp() {
         updateCard();
     } catch (error) {
         console.error('Error loading questions:', error);
-        frontText.innerHTML = "Error loading questions.";
+        frontText.innerHTML = "Erreur lors du chargement des questions.";
     }
 
     // 4. Functions
@@ -101,11 +101,11 @@ async function initApp() {
         showOnlyImportant = !showOnlyImportant;
         if (showOnlyImportant) {
             cards = allCards.filter(c => c.isImportant);
-            filterBtn.innerText = "Show All";
+            filterBtn.innerText = "Toutes les questions";
             filterBtn.classList.add('active-filter');
         } else {
             cards = [...allCards];
-            filterBtn.innerText = "Show Important";
+            filterBtn.innerText = "Questions importantes";
             filterBtn.classList.remove('active-filter');
         }
         currentIndex = 0;

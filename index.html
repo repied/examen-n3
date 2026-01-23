@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Révisions Examen N3</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,30 +12,29 @@
 
     <h1>Examen N3</h1>
     <div class="progress" id="progress">
-        Card <input type="number" id="cardIndexInput" min="1" value="1"
+        Question <input type="number" id="cardIndexInput" min="1" value="1"
             style="width: 50px; text-align: center; border: 1px solid #ccc; border-radius: 4px; font-size: inherit; color: inherit; background: transparent;">
-        of <span id="totalCards">0</span>
+        sur <span id="totalCards">0</span>
     </div>
 
     <div class="scene">
         <div class="card" id="card">
-            <div class="card__face card__face--front" id="front-text">Loading...</div>
+            <div class="card__face card__face--front" id="front-text">Chargement...</div>
             <div class="card__face card__face--back" id="back-text">...</div>
         </div>
     </div>
-    <div style="margin-top: 10px; font-size: 0.8rem; color: #888;">(Source: <a
+    <div style="margin-top: 10px; font-size: 0.8rem; color: #888;">(Source : <a
             href="https://www.plongee-plaisir.com/fr/book/plongee-niveau-3/" target="_blank"
-            style="color: inherit;">Plongée Plaisir</a>. Click card to flip)</div>
+            style="color: inherit;">Plongée Plaisir</a>. Cliquez pour retourner)</div>
 
     <div class="controls">
-        <button id="prevBtn">Previous</button>
-        <button id="randomBtn">Random</button>
-        <button id="nextBtn">Next</button>
+        <button id="prevBtn">Précédent</button>
+        <button id="randomBtn">Aléatoire</button>
+        <button id="nextBtn">Suivant</button>
     </div>
 
     <div style="margin-top: 20px;">
-        <button id="filterBtn" style="background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;">Show
-            Important</button>
+        <button id="filterBtn" style="background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;">Questions importantes</button>
     </div>
 
     <script src="script.js"></script>
