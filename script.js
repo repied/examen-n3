@@ -14,18 +14,42 @@ async function initApp() {
         const rawText = await response.text();
 
         // 2. Parse the Markdown
-        cards = rawText.split('---').map(chunk => {
-            const lines = chunk.trim().split('\n');
-            const question = lines[0]; // First line is question
-            const answer = lines.slice(1).join('<br>'); // Rest is answer
+        const sections = rawText.split(/^## /m).slice(1);
+        cards = [];
 
-            // basic bold parser for **text**
-            const parseBold = (txt) => txt.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        sections.forEach(sectionText => {
+            const lines = sectionText.split('\n');
+            const sectionTitle = lines[0].trim();
+            const content = lines.slice(1).join('\n');
 
-            return {
-                q: parseBold(question.trim()),
-                a: parseBold(answer.trim())
-            };
+            const questionRegex = /\*\*(\d+)\.\s*([\s\S]*?)\*\*\s*\* \*\*Réponse :\s*\*\*([\s\S]*?)(?=\n\s*(?:\*\*\d+\.|#|---)|$)/g;
+            
+            let match;
+            while ((match = questionRegex.exec(content)) !== null) {
+                const question = match[2].trim();
+                const answer = match[3].trim();
+
+                const parseMD = (txt) => {
+                    return txt
+                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                        .split('\n')
+                        .map(line => {
+                            line = line.trim();
+                            if (line.startsWith('* ')) {
+                                return `• ${line.substring(2)}`;
+                            }
+                            return line;
+                        })
+                        .filter(l => l !== '')
+                        .join('<br>');
+                };
+
+                cards.push({
+                    q: `<div style="font-size: 0.7em; opacity: 0.7; margin-bottom: 8px; text-transform: uppercase;">${sectionTitle}</div><div>${parseMD(question)}</div>`,
+                    a: parseMD(answer)
+                });
+            }
         });
 
         updateCard();

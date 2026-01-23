@@ -33,9 +33,10 @@ h1 {
 
 /* The Flashcard Scene */
 .scene {
-    width: 300px;
-    height: 200px;
-    perspective: 600px;
+    width: 100%;
+    max-width: 500px;
+    height: 350px;
+    perspective: 1000px;
     /* Gives the 3D depth */
     cursor: pointer;
 }
@@ -64,15 +65,17 @@ h1 {
     backface-visibility: hidden;
     /* Hides back when facing away */
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 20px;
+    padding: 30px;
     box-sizing: border-box;
     border-radius: 12px;
     background: var(--card-bg);
-    font-size: 1.2rem;
-    line-height: 1.4;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    overflow-y: auto;
 }
 
 .card__face--front {
