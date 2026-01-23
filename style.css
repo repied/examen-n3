@@ -136,6 +136,11 @@ button:active {
     transform: scale(0.98);
 }
 
+button#filterBtn.active-filter {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
 /* Mobile Adjustments */
 @media (max-width: 480px) {
     body {

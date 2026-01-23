@@ -440,7 +440,7 @@
 
 
 
-**105. Remplissez le tableau 2 ci-contre en moins de 4 minutes.**
+**105 xx. Remplissez le tableau 2 ci-contre en moins de 4 minutes.**
 
 * **Réponse :** * 16 m / 0,88 / 52 min -> 8 min 3 m
 * 21 m / 0,87 / 33 min -> 7 min 3 m
@@ -454,7 +454,7 @@
 
 * **Réponse :** 40 min à 33 m. Paliers : 5 min à 6 m et 34 min à 3 m. GPS = L.
 
-**107. Quelle est la conduite à tenir en cas d’interruption ou de mauvaise exécution d’un palier ?**
+**107 xx. Quelle est la conduite à tenir en cas d’interruption ou de mauvaise exécution d’un palier ?**
 
 * **Réponse :** Moins de 3 min pour recommencer le palier interrompu et poursuivre la désaturation.
 

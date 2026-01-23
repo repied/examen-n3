@@ -1,6 +1,8 @@
 async function initApp() {
     let cards = [];
     let currentIndex = 0;
+    let showOnlyImportant = false;
+    let allCards = [];
 
     const cardElement = document.getElementById('card');
     const frontText = document.getElementById('front-text');
@@ -27,8 +29,10 @@ async function initApp() {
 
             let match;
             while ((match = questionRegex.exec(content)) !== null) {
+                const fullQuestionLine = match[0];
                 const question = match[2].trim();
                 const answer = match[3].trim();
+                const isImportant = fullQuestionLine.includes(' xx.');
 
                 const parseMD = (txt) => {
                     return txt
@@ -46,13 +50,15 @@ async function initApp() {
                         .join('<br>');
                 };
 
-                cards.push({
+                allCards.push({
                     q: `<div style="font-size: 0.7em; opacity: 0.7; margin-bottom: 8px; text-transform: uppercase;">${sectionTitle}</div><div>${parseMD(question)}</div>`,
-                    a: parseMD(answer)
+                    a: parseMD(answer),
+                    isImportant: isImportant
                 });
             }
         });
 
+        cards = [...allCards];
         updateCard();
     } catch (error) {
         console.error('Error loading questions:', error);
@@ -72,6 +78,14 @@ async function initApp() {
             frontText.innerHTML = currentCard.q;
             backText.innerHTML = currentCard.a;
 
+            if (currentCard.isImportant) {
+                frontText.style.color = 'red';
+                frontText.style.borderColor = 'red';
+            } else {
+                frontText.style.color = '';
+                frontText.style.borderColor = '';
+            }
+
             // Reset scroll position to top for both faces
             frontText.scrollTop = 0;
             backText.scrollTop = 0;
@@ -82,6 +96,22 @@ async function initApp() {
     }
 
     // 5. Event Listeners
+    const filterBtn = document.getElementById('filterBtn');
+    filterBtn.addEventListener('click', () => {
+        showOnlyImportant = !showOnlyImportant;
+        if (showOnlyImportant) {
+            cards = allCards.filter(c => c.isImportant);
+            filterBtn.innerText = "Show All";
+            filterBtn.classList.add('active-filter');
+        } else {
+            cards = [...allCards];
+            filterBtn.innerText = "Show Important";
+            filterBtn.classList.remove('active-filter');
+        }
+        currentIndex = 0;
+        updateCard();
+    });
+
     cardIndexInput.addEventListener('change', () => {
         let val = parseInt(cardIndexInput.value);
         if (isNaN(val)) return;
