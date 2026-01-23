@@ -23,7 +23,7 @@ async function initApp() {
             const content = lines.slice(1).join('\n');
 
             const questionRegex = /\*\*(\d+)\.\s*([\s\S]*?)\*\*\s*\* \*\*Réponse :\s*\*\*([\s\S]*?)(?=\n\s*(?:\*\*\d+\.|#|---)|$)/g;
-            
+
             let match;
             while ((match = questionRegex.exec(content)) !== null) {
                 const question = match[2].trim();
@@ -94,6 +94,16 @@ async function initApp() {
             currentIndex--;
             updateCard();
         }
+    });
+
+    document.getElementById('randomBtn').addEventListener('click', () => {
+        if (cards.length <= 1) return;
+        let newIndex;
+        do {
+            newIndex = Math.floor(Math.random() * cards.length);
+        } while (newIndex === currentIndex);
+        currentIndex = newIndex;
+        updateCard();
     });
 }
 
