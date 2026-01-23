@@ -1,0 +1,28 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+{
+    "name": "Emprunt Dev Container",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "forwardPorts": [
+        5500
+    ],
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/bash"
+            },
+            "extensions": [
+                "ritwickdey.liveserver",
+                "usernamehw.errorlens",
+                "wayou.vscode-todo-highlight",
+                "streetsidesoftware.code-spell-checker-french",
+                "streetsidesoftware.code-spell-checker",
+                "github.vscode-github-actions"
+            ]
+        }
+    },
+    "remoteUser": "vscode"
+}
