@@ -121,6 +121,43 @@ async function initApp() {
         currentIndex = newIndex;
         updateCard();
     });
+
+    // Keyboard Shortcuts
+    window.addEventListener('keydown', (e) => {
+        // Don't trigger if user is typing in the jump-to-index input
+        if (document.activeElement === cardIndexInput) return;
+
+        switch (e.key) {
+            case 'ArrowLeft':
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCard();
+                }
+                break;
+            case 'ArrowRight':
+                if (currentIndex < cards.length - 1) {
+                    currentIndex++;
+                    updateCard();
+                } else {
+                    currentIndex = 0;
+                    updateCard();
+                }
+                break;
+            case ' ':
+                e.preventDefault(); // Prevent page scroll
+                cardElement.classList.toggle('is-flipped');
+                break;
+            case '?':
+                if (cards.length <= 1) return;
+                let newIndex;
+                do {
+                    newIndex = Math.floor(Math.random() * cards.length);
+                } while (newIndex === currentIndex);
+                currentIndex = newIndex;
+                updateCard();
+                break;
+        }
+    });
 }
 
 // Initialize
