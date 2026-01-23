@@ -25,7 +25,7 @@ async function initApp() {
             const sectionTitle = lines[0].trim();
             const content = lines.slice(1).join('\n');
 
-            const questionRegex = /\*\*(\d+)\.\s*([\s\S]*?)\*\*\s*\* \*\*Réponse :\s*\*\*([\s\S]*?)(?=\n\s*(?:\*\*\d+\.|#|---)|$)/g;
+            const questionRegex = /\*\*(\d+(?:\s+xx)?)\.\s*([\s\S]*?)\*\*\s*\* \*\*Réponse :\s*\*\*([\s\S]*?)(?=\n\s*(?:\*\*\d+|#|---)|$)/g;
 
             let match;
             while ((match = questionRegex.exec(content)) !== null) {
@@ -155,7 +155,7 @@ async function initApp() {
     // Theme Toggle
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
-    
+
     // Load saved theme
     const currentTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', currentTheme);
