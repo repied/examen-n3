@@ -70,6 +70,11 @@ async function initApp() {
             const currentCard = cards[currentIndex];
             frontText.innerHTML = currentCard.q;
             backText.innerHTML = currentCard.a;
+            
+            // Reset scroll position to top for both faces
+            frontText.scrollTop = 0;
+            backText.scrollTop = 0;
+            
             progress.innerText = `Card ${currentIndex + 1} of ${cards.length}`;
         }, 200);
     }

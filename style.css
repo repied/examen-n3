@@ -76,6 +76,25 @@ h1 {
     font-size: 1.1rem;
     line-height: 1.5;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Custom scrollbar for better visibility on long answers */
+.card__face::-webkit-scrollbar {
+    width: 6px;
+}
+
+.card__face::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.card__face::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+.card__face--back::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .card__face--front {
@@ -113,4 +132,38 @@ button:hover {
 
 button:active {
     transform: scale(0.98);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .scene {
+        height: 400px; /* Taller on mobile to fit text better */
+    }
+
+    .card__face {
+        padding: 20px;
+        font-size: 1rem;
+    }
+
+    .controls {
+        gap: 8px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    button {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        flex: 1;
+        max-width: 100px;
+    }
 }
