@@ -12,13 +12,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     min-height: 100vh;
     margin: 0;
     padding: 20px;
 }
 
 h1 {
+    margin-top: 10px;
     margin-bottom: 20px;
     font-size: 1.5rem;
     color: #555;
@@ -76,7 +77,8 @@ h1 {
     font-size: 1.1rem;
     line-height: 1.5;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+    /* Smooth scrolling on iOS */
 }
 
 /* Custom scrollbar for better visibility on long answers */
@@ -146,7 +148,8 @@ button:active {
     }
 
     .scene {
-        height: 400px; /* Taller on mobile to fit text better */
+        height: 400px;
+        /* Taller on mobile to fit text better */
     }
 
     .card__face {
