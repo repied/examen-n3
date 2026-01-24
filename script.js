@@ -125,7 +125,7 @@ async function initApp() {
         cardElement.classList.toggle('is-flipped');
     });
 
-    document.getElementById('nextBtn').addEventListener('click', () => {
+    function goNext() {
         if (currentIndex < cards.length - 1) {
             currentIndex++;
             updateCard();
@@ -133,14 +133,49 @@ async function initApp() {
             currentIndex = 0;
             updateCard();
         }
-    });
+    }
 
-    document.getElementById('prevBtn').addEventListener('click', () => {
+    function goPrev() {
         if (currentIndex > 0) {
             currentIndex--;
             updateCard();
         }
-    });
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', goNext);
+
+    document.getElementById('prevBtn').addEventListener('click', goPrev);
+
+    // Touch Support
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    cardElement.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    cardElement.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
+        const touchEndY = e.changedTouches[0].screenY;
+        handleSwipeGesture(touchStartX, touchStartY, touchEndX, touchEndY);
+    }, { passive: true });
+
+    function handleSwipeGesture(startX, startY, endX, endY) {
+        const diffX = endX - startX;
+        const diffY = endY - startY;
+
+        // Threshold for swipe (e.g. 50px) and check if horizontal swipe is dominant
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+            if (diffX < 0) {
+                // Swipe Left -> Next
+                goNext();
+            } else {
+                // Swipe Right -> Prev
+                goPrev();
+            }
+        }
+    }
 
     document.getElementById('randomBtn').addEventListener('click', () => {
         if (cards.length <= 1) return;
@@ -175,19 +210,10 @@ async function initApp() {
 
         switch (e.key) {
             case 'ArrowLeft':
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateCard();
-                }
+                goPrev();
                 break;
             case 'ArrowRight':
-                if (currentIndex < cards.length - 1) {
-                    currentIndex++;
-                    updateCard();
-                } else {
-                    currentIndex = 0;
-                    updateCard();
-                }
+                goNext();
                 break;
             case ' ':
                 e.preventDefault(); // Prevent page scroll
