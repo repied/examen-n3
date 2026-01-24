@@ -105,7 +105,7 @@ async function initApp() {
             filterBtn.classList.add('active-filter');
         } else {
             cards = [...allCards];
-            filterBtn.innerText = "Questions importantes";
+            filterBtn.innerText = "Questions éliminatoires seulement";
             filterBtn.classList.remove('active-filter');
         }
         currentIndex = 0;

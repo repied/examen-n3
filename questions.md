@@ -1,4 +1,4 @@
-## UL1 : Plongées profondes (Deep Diving)
+## UL1 : Plongées profondes
 
 **1 xx. Quelles sont les prérogatives liées au niveau 3 (PE60+PA60) et aux aptitudes PA40 ?**
 
@@ -126,7 +126,7 @@
 
 ---
 
-## UL2 : Prévention des risques (Risk Prevention)
+## UL2 : Prévention des risques
 
 **31 xx. Quel est l’intérêt d’effectuer régulièrement une visite médicale ?**
 
@@ -290,7 +290,7 @@
 
 ---
 
-## UL3 : La désaturation (Desaturation)
+## UL3 : La désaturation
 
 **71. À quoi font référence les « bulles silencieuses » ?**
 
@@ -468,7 +468,7 @@
 
 ---
 
-## UL4 : Le matériel (Equipment)
+## UL4 : Le matériel
 
 **110. Quelles sont les précautions à prendre avec une bouteille de plongée ?**
 
