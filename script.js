@@ -83,6 +83,28 @@ async function initApp() {
     }
 
     // 4. Functions
+    function updateCardContent(index) {
+        if (!cards[index]) return;
+        const currentCard = cards[index];
+        frontText.innerHTML = currentCard.q;
+        backText.innerHTML = currentCard.a;
+
+        if (currentCard.isImportant) {
+            frontText.style.color = 'red';
+            frontText.style.borderColor = 'red';
+        } else {
+            frontText.style.color = '';
+            frontText.style.borderColor = '';
+        }
+
+        // Reset scroll position to top for both faces
+        frontText.scrollTop = 0;
+        backText.scrollTop = 0;
+
+        cardIndexInput.value = index + 1;
+        totalCardsSpan.innerText = cards.length;
+    }
+
     function updateCard() {
         if (cards.length === 0) return;
 
@@ -91,25 +113,65 @@ async function initApp() {
 
         // Wait a tiny bit to update text so user doesn't see it change while flipping back
         setTimeout(() => {
-            const currentCard = cards[currentIndex];
-            frontText.innerHTML = currentCard.q;
-            backText.innerHTML = currentCard.a;
+            updateCardContent(currentIndex);
+        }, 200);
+    }
 
-            if (currentCard.isImportant) {
-                frontText.style.color = 'red';
-                frontText.style.borderColor = 'red';
+    function animateAndChange(direction) {
+        // Prevent double animation if user clicks fast
+        if (cardElement.classList.contains('slide-out-left') ||
+            cardElement.classList.contains('slide-out-right') ||
+            cardElement.classList.contains('slide-in-left') ||
+            cardElement.classList.contains('slide-in-right')) {
+            return;
+        }
+
+        const isFlipped = cardElement.classList.contains('is-flipped');
+
+        // 1. Add Exit Class
+        let exitClass = '';
+        if (direction === 'next') {
+            exitClass = isFlipped ? 'slide-out-left-flipped' : 'slide-out-left';
+        } else {
+            exitClass = isFlipped ? 'slide-out-right-flipped' : 'slide-out-right';
+        }
+        cardElement.classList.add(exitClass);
+
+        // 2. Wait for exit animation
+        setTimeout(() => {
+            // 3. Change Content & Reset State
+            if (direction === 'next') {
+                currentIndex = (currentIndex < cards.length - 1) ? currentIndex + 1 : 0;
             } else {
-                frontText.style.color = '';
-                frontText.style.borderColor = '';
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : 0;
             }
 
-            // Reset scroll position to top for both faces
-            frontText.scrollTop = 0;
-            backText.scrollTop = 0;
+            updateCardContent(currentIndex);
 
-            cardIndexInput.value = currentIndex + 1;
-            totalCardsSpan.innerText = cards.length;
-        }, 200);
+            // Disable transition temporarily to prevent "flying back" effect when removing is-flipped
+            cardElement.style.transition = 'none';
+            cardElement.classList.remove('is-flipped'); // Reset flip
+            cardElement.classList.remove(exitClass); // Remove exit class
+
+            // Force reflow
+            void cardElement.offsetWidth;
+
+            // 4. Add Enter Class
+            const enterClass = (direction === 'next') ? 'slide-in-right' : 'slide-in-left';
+            cardElement.classList.add(enterClass);
+
+            // Re-enable transition for next flip interaction
+            // Wait for next frame or just clear inline style so CSS takes over
+            requestAnimationFrame(() => {
+                cardElement.style.transition = '';
+            });
+
+            // 5. Cleanup Enter Class
+            setTimeout(() => {
+                cardElement.classList.remove(enterClass);
+            }, 300); // Animation duration
+
+        }, 300); // Exit Animation duration
     }
 
     // 5. Event Listeners
@@ -144,18 +206,15 @@ async function initApp() {
 
     function goNext() {
         if (currentIndex < cards.length - 1) {
-            currentIndex++;
-            updateCard();
+            animateAndChange('next');
         } else {
-            currentIndex = 0;
-            updateCard();
+            animateAndChange('next'); // Loop to start
         }
     }
 
     function goPrev() {
         if (currentIndex > 0) {
-            currentIndex--;
-            updateCard();
+            animateAndChange('prev');
         }
     }
 

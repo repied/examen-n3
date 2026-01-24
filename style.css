@@ -170,6 +170,83 @@ button#filterBtn.active-filter {
     color: white !important;
 }
 
+/* Swipe Animations */
+@keyframes slideOutLeft {
+    to {
+        transform: translateX(-150%) rotateY(0deg);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutLeftFlipped {
+    to {
+        transform: translateX(-150%) rotateY(180deg);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutRight {
+    to {
+        transform: translateX(150%) rotateY(0deg);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutRightFlipped {
+    to {
+        transform: translateX(150%) rotateY(180deg);
+        opacity: 0;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-150%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(150%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.card.slide-out-left {
+    animation: slideOutLeft 0.3s forwards ease-in;
+}
+
+.card.slide-out-left-flipped {
+    animation: slideOutLeftFlipped 0.3s forwards ease-in;
+}
+
+.card.slide-out-right {
+    animation: slideOutRight 0.3s forwards ease-in;
+}
+
+.card.slide-out-right-flipped {
+    animation: slideOutRightFlipped 0.3s forwards ease-in;
+}
+
+.card.slide-in-left {
+    animation: slideInLeft 0.3s forwards ease-out;
+}
+
+.card.slide-in-right {
+    animation: slideInRight 0.3s forwards ease-out;
+}
+
 /* Mobile Adjustments */
 @media (max-width: 480px) {
     body {
