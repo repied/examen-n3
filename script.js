@@ -25,7 +25,7 @@ async function initApp() {
             const sectionTitle = lines[0].trim();
             const content = lines.slice(1).join('\n');
 
-            const questionRegex = /\*\*(\d+(?:\s+xx)?)\.\s*([\s\S]*?)\*\*\s*\* \*\*Réponse :\s*\*\*([\s\S]*?)(?=\n\s*(?:\*\*\d+|#|---)|$)/g;
+            const questionRegex = /\*\*(\d+(?:\s+xx)?)\.\s*([\s\S]*?)\*\*\s*([\s\S]*?)(?=\n\s*(?:\*\*\d+|#|---)|$)/g;
 
             let match;
             while ((match = questionRegex.exec(content)) !== null) {
@@ -35,19 +35,36 @@ async function initApp() {
                 const isImportant = fullQuestionLine.includes(' xx.');
 
                 const parseMD = (txt) => {
-                    return txt
-                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                        .replace(/\*(.*?)\*/g, '<em>$1</em>')
-                        .split('\n')
-                        .map(line => {
-                            line = line.trim();
-                            if (line.startsWith('* ')) {
-                                return `• ${line.substring(2)}`;
+                    let lines = txt.split('\n').map(l => l.trim()).filter(l => l !== '');
+                    let html = '';
+                    let inList = false;
+
+                    lines.forEach(line => {
+                        if (line.startsWith('* ')) {
+                            if (!inList) {
+                                html += '<ul style="text-align: left; margin: 10px 0; padding-left: 20px;">';
+                                inList = true;
                             }
-                            return line;
-                        })
-                        .filter(l => l !== '')
-                        .join('<br>');
+                            let content = line.substring(2)
+                                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                                .replace(/\*(.*?)\*/g, '<em>$1</em>');
+                            html += `<li>${content}</li>`;
+                        } else {
+                            if (inList) {
+                                html += '</ul>';
+                                inList = false;
+                            }
+                            let content = line
+                                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                                .replace(/\*(.*?)\*/g, '<em>$1</em>');
+                            html += `<div style="margin-bottom: 0.5em;">${content}</div>`;
+                        }
+                    });
+
+                    if (inList) {
+                        html += '</ul>';
+                    }
+                    return html;
                 };
 
                 allCards.push({
