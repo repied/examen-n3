@@ -46,7 +46,7 @@ h1 {
     margin-bottom: 28px;
     font-size: 0.9rem;
     color: var(--text);
-    font-weight: 600;
+    /* font-weight: 600; */
 
     /* Improve readability over background image */
     background: rgba(255, 255, 255, 0.4);
@@ -63,6 +63,13 @@ h1 {
         padding: 8px 10px;
         border-radius: 10px;
     }
+
+    .progress__controls {
+        margin-bottom: 8px;
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+    }
 }
 
 /* The Flashcard Scene */
@@ -72,6 +79,24 @@ h1 {
     height: 380px;
     perspective: 1000px;
     cursor: pointer;
+}
+
+/* Controls moved to the progress bar for compact layout */
+.progress__controls {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    margin-right: 12px;
+    padding: 4px 8px;
+    border-radius: 10px;
+}
+
+.progress__controls button {
+    background: rgba(255, 255, 255, 0.4);
+    padding: 6px 10px;
+    min-width: 38px;
+    border-radius: 8px;
+    font-size: 1rem;
 }
 
 /* The Card Object */
@@ -165,6 +190,14 @@ h1 {
     flex-wrap: wrap;
     justify-content: center;
 }
+
+/* Small spacing to keep the progress bar neat */
+/* .progress select,
+.progress input,
+.progress span,
+.progress .progress__controls {
+    vertical-align: middle;
+} */
 
 /* Controls placed as direct children of the .card so they move with the card and stay on top */
 .card>.controls {

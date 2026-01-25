@@ -12,9 +12,8 @@ async function initApp() {
     const totalCardsSpan = document.getElementById('totalCards');
     const deckSelect = document.getElementById('deckSelect');
 
-    // Controls panels (front/back) — used to update aria-hidden when flip state changes
-    const frontControls = document.querySelector('.controls.controls--front');
-    const backControls = document.querySelector('.controls.controls--back');
+    // Progress controls (prev/random/next) — now located in the progress bar
+    const progressControls = document.querySelector('.progress__controls');
 
     // When unflipping we delay showing controls until the card has finished its transform/animation
     let revealTimeout = null;
@@ -28,15 +27,16 @@ async function initApp() {
     function updateControlsVisibility() {
         const flipped = cardElement.classList.contains('is-flipped');
         const controlsHidden = cardElement.classList.contains('controls-hidden');
-        // If controlsHidden is true, keep both hidden. Otherwise show the appropriate group.
-        if (frontControls) frontControls.setAttribute('aria-hidden', (controlsHidden || flipped) ? 'true' : 'false');
-        if (backControls) backControls.setAttribute('aria-hidden', (controlsHidden || !flipped) ? 'true' : 'false');
+        // Hide the progress controls while flipped or while explicitly hidden
+        if (progressControls) progressControls.setAttribute('aria-hidden', (controlsHidden || flipped) ? 'true' : 'false');
     }
 
     function hideControlsImmediately() {
         clearRevealTimeout();
         cardElement.classList.add('controls-hidden');
         updateControlsVisibility();
+        // Also add aria-hidden to progress controls immediately for instant feedback
+        if (progressControls) progressControls.setAttribute('aria-hidden', 'true');
     }
 
     function hideControlsUntilRevealed() {

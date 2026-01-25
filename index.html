@@ -35,6 +35,11 @@
         Question <input type="number" id="cardIndexInput" min="1" value="1"
             style="width: 50px; text-align: center; border: 1px solid #ccc; border-radius: 4px; font-size: inherit; color: inherit; background: transparent;">
         sur <span id="totalCards">0</span>
+        <div class="progress__controls" aria-hidden="false">
+            <button type="button" class="prevBtn" aria-label="Précédent">◀</button>
+            <button type="button" class="randomBtn" aria-label="Aléatoire">🎲</button>
+            <button type="button" class="nextBtn" aria-label="Suivant">▶</button>
+        </div>
     </div>
 
     <div class="scene">
@@ -47,18 +52,7 @@
             </div>
 
             <!-- Controls are outside the faces so they are always on top and move with the card -->
-            <div class="controls controls--front" aria-hidden="false">
-                <button type="button" class="prevBtn" aria-label="Précédent">Précédent</button>
-                <button type="button" class="randomBtn" aria-label="Aléatoire">Aléatoire</button>
-                <button type="button" class="flipBtn" aria-label="Réponse">Réponse</button>
-                <button type="button" class="nextBtn" aria-label="Suivant">Suivant</button>
-            </div>
-            <div class="controls controls--back" aria-hidden="true">
-                <button type="button" class="prevBtn" aria-label="Précédent">Précédent</button>
-                <button type="button" class="randomBtn" aria-label="Aléatoire">Aléatoire</button>
-                <button type="button" class="flipBtn" aria-label="Question">Question</button>
-                <button type="button" class="nextBtn" aria-label="Suivant">Suivant</button>
-            </div>
+
         </div>
     </div>
 
