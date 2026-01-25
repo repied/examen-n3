@@ -308,5 +308,71 @@ async function initApp() {
     });
 }
 
-// Initialize
-initApp();
+// Initialize behind a simple password gate
+(function () {
+    // Store only the SHA-256 hash of the normalized password (lowercased + trimmed)
+    const GATE_HASH = '70b50f3421e614638c69b7cd87aaf01f6614eb6a1479c3d6d64d8ed74ce72f69';
+    const unlockedKey = 'unlocked_n3';
+
+    const gate = document.getElementById('gate');
+    const passwordInput = document.getElementById('passwordInput');
+    const unlockBtn = document.getElementById('unlockBtn');
+    const gateMessage = document.getElementById('gateMessage');
+
+    function showGate() {
+        document.body.classList.add('locked');
+        if (gate) gate.style.display = 'flex';
+        if (passwordInput) passwordInput.value = '';
+        if (passwordInput) passwordInput.focus();
+    }
+
+    function hideGate() {
+        document.body.classList.remove('locked');
+        if (gate) gate.style.display = 'none';
+    }
+
+    // Compute SHA-256 hex digest of a string using Web Crypto API
+    async function sha256Hex(str) {
+        const data = new TextEncoder().encode(str);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function unlock() {
+        const value = passwordInput ? (passwordInput.value || '') : '';
+        const normalized = value.trim().toLowerCase();
+        try {
+            const hashHex = await sha256Hex(normalized);
+            if (hashHex === GATE_HASH) {
+                localStorage.setItem(unlockedKey, 'true');
+                hideGate();
+                initApp();
+                return;
+            }
+        } catch (e) {
+            console.error('Hashing failed', e);
+        }
+
+        if (gateMessage) gateMessage.innerText = 'Mot de passe incorrect.';
+        if (passwordInput) passwordInput.value = '';
+        if (passwordInput) passwordInput.focus();
+        if (passwordInput) {
+            passwordInput.classList.add('shake');
+            setTimeout(() => passwordInput.classList.remove('shake'), 300);
+        }
+    }
+
+    // If already unlocked, start app immediately
+    if (localStorage.getItem(unlockedKey) === 'true') {
+        hideGate();
+        initApp();
+    } else {
+        showGate();
+    }
+
+    if (unlockBtn) unlockBtn.addEventListener('click', unlock);
+    if (passwordInput) passwordInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') unlock();
+    });
+})();

@@ -281,3 +281,93 @@ button#filterBtn.active-filter {
         max-width: 100px;
     }
 }
+
+/* Simple password gate overlay */
+.gate {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.gate__panel {
+    background: var(--card-bg);
+    color: var(--text);
+    padding: 24px;
+    border-radius: 10px;
+    width: 360px;
+    max-width: calc(100% - 40px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.gate__panel h2 {
+    margin: 0 0 12px;
+    font-size: 1.1rem;
+}
+
+.gate__panel input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.gate__actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.gate__msg {
+    color: #e74c3c;
+    min-height: 1.2em;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.gate__hint {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 6px;
+}
+
+body.locked {
+    overflow: hidden;
+}
+
+/* Shake hint */
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-6px);
+    }
+
+    40% {
+        transform: translateX(6px);
+    }
+
+    60% {
+        transform: translateX(-4px);
+    }
+
+    80% {
+        transform: translateX(4px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.shake {
+    animation: shake 0.3s ease;
+}
