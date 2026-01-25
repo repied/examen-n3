@@ -12,6 +12,8 @@
     "customizations": {
         "vscode": {
             "settings": {
+                "workbench.preferredDarkColorTheme": "Dracula Theme",
+                "workbench.preferredLightColorTheme": "Dracula Theme",
                 "terminal.integrated.shell.linux": "/bin/bash"
             },
             "extensions": [
@@ -20,7 +22,8 @@
                 "wayou.vscode-todo-highlight",
                 "streetsidesoftware.code-spell-checker-french",
                 "streetsidesoftware.code-spell-checker",
-                "github.vscode-github-actions"
+                "github.vscode-github-actions",
+                "dracula-theme.theme-dracula"
             ]
         }
     },
