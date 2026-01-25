@@ -382,16 +382,6 @@ async function initApp() {
         }
     }
 
-    document.getElementById('randomBtn').addEventListener('click', () => {
-        if (cards.length <= 1) return;
-        let newIndex;
-        do {
-            newIndex = Math.floor(Math.random() * cards.length);
-        } while (newIndex === currentIndex);
-        currentIndex = newIndex;
-        updateCard();
-    });
-
     // Keyboard Shortcuts
     window.addEventListener('keydown', (e) => {
         // Don't trigger if user is typing in the jump-to-index input
