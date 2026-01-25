@@ -12,6 +12,79 @@ async function initApp() {
     const totalCardsSpan = document.getElementById('totalCards');
     const deckSelect = document.getElementById('deckSelect');
 
+    // Controls panels (front/back) — used to update aria-hidden when flip state changes
+    const frontControls = document.querySelector('.controls.controls--front');
+    const backControls = document.querySelector('.controls.controls--back');
+
+    // When unflipping we delay showing controls until the card has finished its transform/animation
+    let revealTimeout = null;
+    function clearRevealTimeout() {
+        if (revealTimeout) {
+            clearTimeout(revealTimeout);
+            revealTimeout = null;
+        }
+    }
+
+    function updateControlsVisibility() {
+        const flipped = cardElement.classList.contains('is-flipped');
+        const controlsHidden = cardElement.classList.contains('controls-hidden');
+        // If controlsHidden is true, keep both hidden. Otherwise show the appropriate group.
+        if (frontControls) frontControls.setAttribute('aria-hidden', (controlsHidden || flipped) ? 'true' : 'false');
+        if (backControls) backControls.setAttribute('aria-hidden', (controlsHidden || !flipped) ? 'true' : 'false');
+    }
+
+    function hideControlsImmediately() {
+        clearRevealTimeout();
+        cardElement.classList.add('controls-hidden');
+        updateControlsVisibility();
+    }
+
+    function hideControlsUntilRevealed() {
+        // Keep controls hidden and set a fallback to reveal in case no transition/animation fires
+        hideControlsImmediately();
+        clearRevealTimeout();
+        revealTimeout = setTimeout(() => {
+            if (!cardElement.classList.contains('is-flipped')) {
+                cardElement.classList.remove('controls-hidden');
+                updateControlsVisibility();
+            }
+            revealTimeout = null;
+        }, 750); // slightly longer than flip transition (600ms)
+    }
+
+    // Toggle flip, hide controls as needed and reveal after animation/transition
+    function toggleFlip() {
+        const willBeFlipped = !cardElement.classList.contains('is-flipped');
+        cardElement.classList.toggle('is-flipped');
+        if (willBeFlipped) {
+            // Going to flipped: hide controls immediately
+            hideControlsImmediately();
+        } else {
+            // Going back to front: keep hidden until fully back
+            hideControlsUntilRevealed();
+        }
+    }
+
+    // Remove controls-hidden once the transform transition ends (card fully returned to front)
+    cardElement.addEventListener('transitionend', (e) => {
+        const prop = e.propertyName || e.elapsedTime;
+        if ((prop === 'transform' || prop.includes('transform')) && !cardElement.classList.contains('is-flipped')) {
+            clearRevealTimeout();
+            cardElement.classList.remove('controls-hidden');
+            updateControlsVisibility();
+        }
+    });
+
+    // Also watch animationend for slide-in animations used during card changes
+    cardElement.addEventListener('animationend', (e) => {
+        const name = e.animationName || '';
+        if ((name.startsWith('slideIn') || name.startsWith('slide-in')) && !cardElement.classList.contains('is-flipped')) {
+            clearRevealTimeout();
+            cardElement.classList.remove('controls-hidden');
+            updateControlsVisibility();
+        }
+    });
+
     const parseContent = (rawText) => {
         const sections = rawText.split(/^## /m).slice(1);
         const extractedCards = [];
@@ -99,6 +172,8 @@ async function initApp() {
         const initialCards = await loadDeckFromFile('questions-plongeeplaisir.md');
         cards = [...initialCards];
         updateCard();
+        // Ensure controls visibility is correct on initial load
+        updateControlsVisibility();
     })();
 
     // 4. Functions
@@ -134,7 +209,15 @@ async function initApp() {
         }
 
         // Reset flip state
+        const wasFlipped = cardElement.classList.contains('is-flipped');
         cardElement.classList.remove('is-flipped');
+        if (wasFlipped) {
+            // keep hidden until fully back
+            hideControlsUntilRevealed();
+        } else {
+            cardElement.classList.remove('controls-hidden');
+            updateControlsVisibility();
+        }
 
         // Wait a tiny bit to update text so user doesn't see it change while flipping back
         setTimeout(() => {
@@ -176,6 +259,8 @@ async function initApp() {
             // Disable transition temporarily to prevent "flying back" effect when removing is-flipped
             cardElement.style.transition = 'none';
             cardElement.classList.remove('is-flipped'); // Reset flip
+            // Keep controls hidden until the enter animation or a fallback timeout finishes
+            hideControlsUntilRevealed();
             cardElement.classList.remove(exitClass); // Remove exit class
 
             // Force reflow
@@ -233,7 +318,7 @@ async function initApp() {
     });
 
     cardElement.addEventListener('click', () => {
-        cardElement.classList.toggle('is-flipped');
+        toggleFlip();
     });
 
     function goNext() {
@@ -250,9 +335,26 @@ async function initApp() {
         }
     }
 
-    document.getElementById('nextBtn').addEventListener('click', goNext);
+    // Buttons inside the card (may exist on both faces) — attach listeners by class
 
-    document.getElementById('prevBtn').addEventListener('click', goPrev);
+    document.querySelectorAll('.nextBtn').forEach(b => b.addEventListener('click', (e) => { e.stopPropagation(); goNext(); }));
+    document.querySelectorAll('.prevBtn').forEach(b => b.addEventListener('click', (e) => { e.stopPropagation(); goPrev(); }));
+    document.querySelectorAll('.randomBtn').forEach(b => b.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (cards.length <= 1) return;
+        let newIndex;
+        do {
+            newIndex = Math.floor(Math.random() * cards.length);
+        } while (newIndex === currentIndex);
+        currentIndex = newIndex;
+        updateCard();
+    }));
+
+    // Flip button(s)
+    document.querySelectorAll('.flipBtn').forEach(b => b.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleFlip();
+    }));
 
     // Touch Support
     let touchStartX = 0;
@@ -309,7 +411,11 @@ async function initApp() {
                 break;
             case ' ':
                 e.preventDefault(); // Prevent page scroll
-                cardElement.classList.toggle('is-flipped');
+                toggleFlip();
+                break;
+            case 'r':
+            case 'R':
+                toggleFlip();
                 break;
             case '?':
                 if (cards.length <= 1) return;

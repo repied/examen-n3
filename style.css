@@ -85,7 +85,8 @@ h1 {
     align-items: center;
     justify-content: flex-start;
     text-align: center;
-    padding: 40px;
+    padding: 40px 40px 96px;
+    /* leave space at bottom for controls */
     box-sizing: border-box;
     border-radius: 16px;
     background: var(--card-bg);
@@ -141,6 +142,78 @@ h1 {
     gap: 12px;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+/* Controls placed as direct children of the .card so they move with the card and stay on top */
+.card>.controls {
+    position: absolute;
+    /* overlay on the card so they remain visible */
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 18px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    z-index: 60;
+    /* ensure buttons sit on top of faces */
+    width: calc(100% - 48px);
+    pointer-events: auto;
+}
+
+/* Visibility toggles: by default show front controls; when flipped hide all controls */
+.card>.controls.controls--back {
+    display: none;
+}
+
+.card.is-flipped>.controls.controls--front {
+    display: none;
+}
+
+.card.is-flipped>.controls.controls--back {
+    display: none;
+}
+
+/* Ensure all controls are hidden when the card is flipped */
+.card.is-flipped>.controls {
+    display: none !important;
+    pointer-events: none !important;
+}
+
+/* Prominent flip button inside the card */
+.card .flipBtn {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+/* Back face variant so the button looks good on dark background */
+.card__face--back .flipBtn {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card .controls button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+/* Slightly smaller buttons inside cards for better fit */
+.card .controls button {
+    padding: 8px 12px;
+    min-width: 72px;
+}
+
+@media (max-width: 480px) {
+    .card .controls button {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+        min-width: 60px;
+    }
 }
 
 button {
