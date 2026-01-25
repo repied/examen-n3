@@ -167,10 +167,26 @@ async function initApp() {
         }
     };
 
+    // Help/Instruction card in French
+    const helpCard = {
+        q: `<div style="font-size: 0.7em; opacity: 0.7; margin-bottom: 8px; text-transform: uppercase;">🤿 Aide 🤿</div>
+            <div style="text-align: left;"> 
+                    👆 <strong>Cliquez</strong> sur une carte (ou barre espace) pour voir la réponse.<br>
+                    ↔️ <strong>Swippez</strong> (ou flèches) pour changer de question.<br>
+                    🎲 Pour une question aléatoire.<br>
+                    🔼 Le jeux de question peut être changé.<br>
+            </div>`,
+        a: `<div style="font-size: 1.2em; font-weight: bold; margin-bottom: 15px;">Bonnes révisions !</div>
+            <p style="text-align: left;">Cette application est conçue pour vous aider à préparer l'examen N3.</p>
+            <p style="text-align: left;">Source <a href="https://www.plongee-plaisir.com/fr/book/plongee-niveau-3/" target="_blank" rel="noopener noreferrer">Plongée Plaisir</a>.</p>
+            `,
+        isImportant: false
+    };
+
     // Initial load
     await (async () => {
         const initialCards = await loadDeckFromFile('questions-plongeeplaisir.md');
-        cards = [...initialCards];
+        cards = [helpCard, ...initialCards];
         updateCard();
         // Ensure controls visibility is correct on initial load
         updateControlsVisibility();
@@ -296,7 +312,7 @@ async function initApp() {
         if (filterFn) {
             cards = deckCards.filter(filterFn);
         } else {
-            cards = [...deckCards];
+            cards = [helpCard, ...deckCards];
         }
 
         currentIndex = 0;

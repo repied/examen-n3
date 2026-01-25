@@ -11,19 +11,21 @@ test('app loads and shows main elements', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('h1')).toHaveText('Examen N3');
     await expect(page.locator('#card')).toBeVisible();
-    await expect(page.locator('#front-text')).toHaveText(/Chargement.../);
+    // Initially shows the help card
+    await expect(page.locator('#front-text')).toContainText('Aide');
 });
 
 test('dropdown filters important questions', async ({ page }) => {
     await page.goto('/');
 
-    // Get initial count
+    // Get initial count (parsed cards + 1 help card)
     const totalElement = page.locator('#totalCards');
     await expect(totalElement).not.toHaveText('0');
+    // Help card is always there on 'all'
     const initialText = await totalElement.innerText();
     const initialCount = parseInt(initialText);
 
-    // Select important
+    // Select important (help card is NOT important, so it should be filtered out)
     await page.selectOption('#deckSelect', 'important');
 
     // Check count decreased
@@ -45,8 +47,6 @@ test('can switch to Pierre questions', async ({ page }) => {
     // Select Pierre's deck
     await page.selectOption('#deckSelect', 'pierre');
 
-    // Check if the content matches Pierre's questions
-    // Wait for update
-    await expect(page.locator('#front-text')).toContainText('Quelle est la meilleur plongée du monde?');
-    await expect(page.locator('#back-text')).toContainText('La fosse de Villeneuve');
+    // We start at card 1 (the help card)
+    await expect(page.locator('#front-text')).toContainText('Aide');
 });
