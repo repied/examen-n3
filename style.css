@@ -1,17 +1,26 @@
 :root {
-    --primary: #4a90e2;
-    --bg: #f4f4f9;
+    --primary: #3b82f6;
+    --primary-light: #60a5fa;
+    --primary-dark: #1e40af;
+    --accent: #8b5cf6;
+    --bg: #f8fafc;
     --card-bg: #ffffff;
-    --text: #333;
-    --card-shadow: rgba(0, 0, 0, 0.1);
+    --text: #0f172a;
+    --text-secondary: #64748b;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.04);
+    --border-color: #e2e8f0;
 }
 
 [data-theme="dark"] {
-    --bg: #1a1a1a;
-    --card-bg: #2d2d2d;
-    --text: #f0f0f0;
-    --primary: #5da5f5;
-    --card-shadow: rgba(0, 0, 0, 0.5);
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --primary: #60a5fa;
+    --primary-light: #93c5fd;
+    --primary-dark: #1e40af;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.2);
+    --border-color: #334155;
 }
 
 body {
@@ -28,26 +37,31 @@ body {
 }
 
 h1 {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-    color: #555;
+    margin-top: 20px;
+    margin-bottom: 32px;
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
 }
 
 /* Progress Bar */
 .progress {
-    margin-bottom: 20px;
+    margin-bottom: 28px;
     font-size: 0.9rem;
-    color: #777;
+    color: var(--text-secondary);
+    font-weight: 500;
 }
 
 /* The Flashcard Scene */
 .scene {
     width: 100%;
-    max-width: 500px;
-    height: 350px;
+    max-width: 550px;
+    height: 380px;
     perspective: 1000px;
-    /* Gives the 3D depth */
     cursor: pointer;
 }
 
@@ -56,10 +70,10 @@ h1 {
     width: 100%;
     height: 100%;
     position: relative;
-    transition: transform 0.6s;
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     transform-style: preserve-3d;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px var(--card-shadow);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
 }
 
 /* Flip Action */
@@ -73,22 +87,19 @@ h1 {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    /* Hides back when facing away */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    /* Changed from center to allow scrolling from the top */
     text-align: center;
-    padding: 30px;
+    padding: 40px;
     box-sizing: border-box;
-    border-radius: 12px;
+    border-radius: 16px;
     background: var(--card-bg);
     font-size: 1.1rem;
-    line-height: 1.5;
+    line-height: 1.6;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    /* Smooth scrolling on iOS */
 }
 
 /* Vertically center content when it's short, but allow scrolling from top when long */
@@ -119,55 +130,78 @@ h1 {
 .card__face--front {
     border: 2px solid var(--primary);
     color: var(--primary);
-    font-weight: bold;
+    font-weight: 600;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.02) 0%, rgba(139, 92, 246, 0.02) 100%);
 }
 
 .card__face--back {
-    background-color: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: white;
     transform: rotateY(180deg);
 }
 
 /* Navigation Buttons */
 .controls {
-    margin-top: 30px;
+    margin-top: 40px;
     display: flex;
-    gap: 15px;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #ddd;
+    padding: 10px 24px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: white;
+    color: var(--text);
     cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.2s;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] button {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
 }
 
 button:hover {
-    background-color: #ccc;
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    transform: translateY(-1px);
 }
 
 button:active {
-    transform: scale(0.98);
+    transform: scale(0.96);
 }
 
 button#filterBtn {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+    background-color: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fee2e2;
 }
 
 [data-theme="dark"] button#filterBtn {
-    background-color: #442727;
-    color: #f8d7da;
-    border: 1px solid #6c3a3a;
+    background-color: #7f1d1d;
+    color: #fca5a5;
+    border: 1px solid #991b1b;
+}
+
+button#filterBtn:hover {
+    background-color: #dc2626;
+    color: white;
+    border-color: #dc2626;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
 }
 
 button#filterBtn.active-filter {
-    background-color: #dc3545 !important;
+    background-color: #991b1b !important;
     color: white !important;
+    border-color: #991b1b !important;
 }
 
 /* Swipe Animations */
@@ -250,35 +284,33 @@ button#filterBtn.active-filter {
 /* Mobile Adjustments */
 @media (max-width: 480px) {
     body {
-        padding: 10px;
+        padding: 16px;
     }
 
     h1 {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
+        font-size: 1.75rem;
+        margin-bottom: 24px;
     }
 
     .scene {
-        height: 400px;
-        /* Taller on mobile to fit text better */
+        height: 420px;
     }
 
     .card__face {
-        padding: 20px;
+        padding: 28px;
         font-size: 1rem;
     }
 
     .controls {
         gap: 8px;
         width: 100%;
-        justify-content: center;
     }
 
     button {
-        padding: 10px 15px;
+        padding: 10px 16px;
         font-size: 0.9rem;
         flex: 1;
-        max-width: 100px;
+        min-width: 70px;
     }
 }
 
@@ -296,26 +328,37 @@ button#filterBtn.active-filter {
 .gate__panel {
     background: var(--card-bg);
     color: var(--text);
-    padding: 24px;
-    border-radius: 10px;
-    width: 360px;
+    padding: 32px;
+    border-radius: 16px;
+    width: 380px;
     max-width: calc(100% - 40px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
     text-align: center;
 }
 
 .gate__panel h2 {
-    margin: 0 0 12px;
-    font-size: 1.1rem;
+    margin: 0 0 16px;
+    font-size: 1.3rem;
+    font-weight: 700;
 }
 
 .gate__panel input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 8px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
     font-size: 1rem;
+    background: var(--bg);
+    color: var(--text);
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.gate__panel input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .gate__actions {
@@ -325,16 +368,17 @@ button#filterBtn.active-filter {
 }
 
 .gate__msg {
-    color: #e74c3c;
+    color: #dc2626;
     min-height: 1.2em;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     font-size: 0.9rem;
+    font-weight: 500;
 }
 
 .gate__hint {
     font-size: 0.85rem;
-    color: #666;
-    margin-top: 6px;
+    color: var(--text-secondary);
+    margin-top: 12px;
 }
 
 body.locked {
@@ -370,4 +414,23 @@ body.locked {
 
 .shake {
     animation: shake 0.3s ease;
+}
+
+/* Input styling for progress */
+input[type="number"] {
+    padding: 6px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: inherit;
+    color: var(--text);
+    background: var(--bg);
+    width: 50px;
+    text-align: center;
+    transition: border-color 0.2s;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
 }
