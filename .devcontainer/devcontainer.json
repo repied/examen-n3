@@ -26,6 +26,6 @@
             ]
         }
     },
-    "remoteUser": "vscode",
-    "postCreateCommand": "git config commit.gpgsign false"
+    "remoteUser": "node",
+    "postCreateCommand": "git config commit.gpgsign false && npm install && npx playwright install"
 }
