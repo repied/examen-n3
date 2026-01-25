@@ -27,5 +27,6 @@
             ]
         }
     },
-    "remoteUser": "vscode"
+    "remoteUser": "vscode",
+    "postCreateCommand": "git config commit.gpgsign false"
 }
