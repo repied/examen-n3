@@ -263,22 +263,6 @@ async function initApp() {
         updateCard();
     });
 
-    // Theme Toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = document.getElementById('themeIcon');
-
-    // Load saved theme
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    themeIcon.innerText = currentTheme === 'dark' ? '☀️' : '🌙';
-
-    themeToggle.addEventListener('click', () => {
-        const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        themeIcon.innerText = theme === 'dark' ? '☀️' : '🌙';
-    });
-
     // Keyboard Shortcuts
     window.addEventListener('keydown', (e) => {
         // Don't trigger if user is typing in the jump-to-index input

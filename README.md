@@ -11,4 +11,4 @@ The application will be available at a local URL, typically `http://127.0.0.1:55
 
 # Code
 
-This project has been 100% vibe coded.
+This project has been almost 100% vibe-coded.

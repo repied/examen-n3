@@ -11,18 +11,6 @@
     --border-color: #e2e8f0;
 }
 
-[data-theme="dark"] {
-    --bg: #0f172a;
-    --card-bg: #1e293b;
-    --text: #f1f5f9;
-    --text-secondary: #cbd5e1;
-    --primary: #60a5fa;
-    --primary-light: #93c5fd;
-    --primary-dark: #1e40af;
-    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.2);
-    --border-color: #334155;
-}
-
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg);
@@ -168,11 +156,6 @@ button {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-[data-theme="dark"] button {
-    background-color: var(--card-bg);
-    border-color: var(--border-color);
-}
-
 button:hover {
     background-color: var(--primary);
     color: white;
@@ -189,12 +172,6 @@ button#filterBtn {
     background-color: #fef2f2;
     color: #991b1b;
     border: 1px solid #fee2e2;
-}
-
-[data-theme="dark"] button#filterBtn {
-    background-color: #7f1d1d;
-    color: #fca5a5;
-    border: 1px solid #991b1b;
 }
 
 button#filterBtn:hover {
