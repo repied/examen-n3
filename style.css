@@ -19,14 +19,21 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    color: var(--text);
+    /* Prevent background jumps on mobile */
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    margin: 0;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    min-height: 100vh;
-    margin: 0;
-    padding: 20px;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+}
+
+html {
+    height: -webkit-fill-available;
 }
 
 h1 {
