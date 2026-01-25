@@ -183,13 +183,8 @@ async function initApp() {
         frontText.innerHTML = currentCard.q;
         backText.innerHTML = currentCard.a;
 
-        if (currentCard.isImportant) {
-            frontText.style.color = 'red';
-            frontText.style.borderColor = 'red';
-        } else {
-            frontText.style.color = '';
-            frontText.style.borderColor = '';
-        }
+        frontText.style.color = '';
+        frontText.style.borderColor = '';
 
         // Reset scroll position to top for both faces
         frontText.scrollTop = 0;
