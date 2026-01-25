@@ -25,15 +25,18 @@
 
     <h1>Examen N3</h1>
     <div class="progress" id="progress">
-        <select id="deckSelect"
-            style="border: 1px solid #ccc; border-radius: 4px; font-size: inherit; color: inherit; background: transparent; padding: 2px;">
-            <option value="all">PlongéePlaisir (toutes)</option>
-            <option value="important">PlongéePlaisir (éliminatoires)</option>
-            <option value="pierre">Pierre's questions</option>
-        </select>
-        Question <input type="number" id="cardIndexInput" min="1" value="1"
-            style="width: 50px; text-align: center; border: 1px solid #ccc; border-radius: 4px; font-size: inherit; color: inherit; background: transparent;">
-        sur <span id="totalCards">0</span>
+        <div class="progress__info">
+            <select id="deckSelect"
+                style="border: 1px solid #ccc; border-radius: 4px; font-size: inherit; color: inherit; background: transparent; padding: 2px;">
+                <option value="all">PlongéePlaisir (toutes)</option>
+                <option value="important">PlongéePlaisir (éliminatoires)</option>
+                <option value="pierre">Pierre's questions</option>
+            </select>
+            <span style="margin: 0 4px;">|</span>
+            <input type="number" id="cardIndexInput" min="1" value="1"
+                style="width: 35px; text-align: center; border: 1px solid #ccc; border-radius: 4px; font-size: inherit; color: inherit; background: transparent;">
+            / <span id="totalCards">0</span>
+        </div>
         <div class="progress__controls" aria-hidden="false">
             <button type="button" class="prevBtn" aria-label="Précédent">◀</button>
             <button type="button" class="randomBtn" aria-label="Aléatoire">🎲</button>
