@@ -11,29 +11,42 @@
     --border-color: #e2e8f0;
 }
 
+html {
+    height: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg);
-    background-image: url('background.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    /* Prevent background jumps on mobile */
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-    margin: 0;
-    padding: 20px;
+    /* Moved background to pseudo-element or fixed container to prevent jumps */
+    color: var(--text);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    min-height: 100%;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
     overflow-x: hidden;
-    /* Prevent horizontal scroll */
+    position: relative;
 }
 
-html {
-    height: -webkit-fill-available;
+/* Fixed background container */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    /* Ensure it stays behind everything */
 }
 
 h1 {
