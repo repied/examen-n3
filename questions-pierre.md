@@ -1,4 +1,3 @@
-# Pierre's questions
 
 ## Misc 1
 
@@ -9,6 +8,8 @@ La fosse de Villeneuve
 **2 Meilleur resto ?**
 
 Chez Key
+
+---
 
 ## Misc 2
 

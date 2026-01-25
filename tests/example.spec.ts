@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
+    page.on('console', msg => console.log('BROWSER LOG:', msg.text()));
     await page.addInitScript(() => {
         window.localStorage.setItem('unlocked_n3', 'true');
     });
@@ -36,4 +37,16 @@ test('dropdown filters important questions', async ({ page }) => {
 
     // Check count restored
     await expect(totalElement).toHaveText(initialText);
+});
+
+test('can switch to Pierre questions', async ({ page }) => {
+    await page.goto('/');
+
+    // Select Pierre's deck
+    await page.selectOption('#deckSelect', 'pierre');
+
+    // Check if the content matches Pierre's questions
+    // Wait for update
+    await expect(page.locator('#front-text')).toContainText('Quelle est la meilleur plongée du monde?');
+    await expect(page.locator('#back-text')).toContainText('La fosse de Villeneuve');
 });

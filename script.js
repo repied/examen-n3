@@ -1,7 +1,9 @@
 async function initApp() {
     let cards = [];
     let currentIndex = 0;
-    let allCards = [];
+
+    // Cache for loaded decks: filename -> array of card objects
+    const deckCache = {};
 
     const cardElement = document.getElementById('card');
     const frontText = document.getElementById('front-text');
@@ -10,29 +12,25 @@ async function initApp() {
     const totalCardsSpan = document.getElementById('totalCards');
     const deckSelect = document.getElementById('deckSelect');
 
-    // 1. Fetch the content
-    try {
-        const response = await fetch('questions.md');
-        if (!response.ok) throw new Error('Failed to fetch questions.md');
-        const rawText = await response.text();
-
-        // 2. Parse the Markdown
+    const parseContent = (rawText) => {
         const sections = rawText.split(/^## /m).slice(1);
-        cards = [];
+        const extractedCards = [];
 
         sections.forEach(sectionText => {
             const lines = sectionText.split('\n');
             const sectionTitle = lines[0].trim();
             const content = lines.slice(1).join('\n');
 
-            const questionRegex = /\*\*(\d+(?:\s+xx)?)\.\s*([\s\S]*?)\*\*\s*([\s\S]*?)(?=\n\s*(?:\*\*\d+|#|---)|$)/g;
+            // Allow optional space after ** and optional dot after number
+            const questionRegex = /\*\*\s*(\d+(?:\s+xx)?)\.?\s*([\s\S]*?)\*\*\s*([\s\S]*?)(?=\n\s*(?:\*\*\d+|#|---)|$)/g;
 
             let match;
             while ((match = questionRegex.exec(content)) !== null) {
                 const fullQuestionLine = match[0];
+                // match[1] is number, match[2] is question, match[3] is answer
                 const question = match[2].trim();
                 const answer = match[3].trim();
-                const isImportant = fullQuestionLine.includes(' xx.');
+                const isImportant = fullQuestionLine.includes(' xx');
 
                 const parseMD = (txt) => {
                     let lines = txt.split('\n').map(l => l.trim()).filter(l => l !== '');
@@ -67,20 +65,41 @@ async function initApp() {
                     return html;
                 };
 
-                allCards.push({
+                extractedCards.push({
                     q: `<div style="font-size: 0.7em; opacity: 0.7; margin-bottom: 8px; text-transform: uppercase;">${sectionTitle}</div><div>${parseMD(question)}</div>`,
                     a: parseMD(answer),
                     isImportant: isImportant
                 });
             }
         });
+        return extractedCards;
+    };
 
-        cards = [...allCards];
+    const loadDeckFromFile = async (filename) => {
+        if (deckCache[filename]) {
+            return deckCache[filename];
+        }
+        try {
+            const response = await fetch(filename);
+            if (!response.ok) throw new Error(`Failed to fetch ${filename}`);
+            const rawText = await response.text();
+            const parsed = parseContent(rawText);
+            console.log(`Parsed ${parsed.length} cards from ${filename}`);
+            deckCache[filename] = parsed;
+            return parsed;
+        } catch (error) {
+            console.error('Error loading questions:', error);
+            frontText.innerHTML = "Erreur lors du chargement des questions.";
+            return [];
+        }
+    };
+
+    // Initial load
+    await (async () => {
+        const initialCards = await loadDeckFromFile('questions-plongeeplaisir.md');
+        cards = [...initialCards];
         updateCard();
-    } catch (error) {
-        console.error('Error loading questions:', error);
-        frontText.innerHTML = "Erreur lors du chargement des questions.";
-    }
+    })();
 
     // 4. Functions
     function updateCardContent(index) {
@@ -106,7 +125,13 @@ async function initApp() {
     }
 
     function updateCard() {
-        if (cards.length === 0) return;
+        if (cards.length === 0) {
+            frontText.innerHTML = "Aucune question trouvée.";
+            backText.innerHTML = "";
+            totalCardsSpan.innerText = "0";
+            cardElement.classList.remove('is-flipped');
+            return;
+        }
 
         // Reset flip state
         cardElement.classList.remove('is-flipped');
@@ -175,13 +200,25 @@ async function initApp() {
     }
 
     // 5. Event Listeners
-    deckSelect.addEventListener('change', () => {
+    deckSelect.addEventListener('change', async () => {
         const val = deckSelect.value;
-        if (val === 'important') {
-            cards = allCards.filter(c => c.isImportant);
-        } else {
-            cards = [...allCards];
+        let filename = 'questions-plongeeplaisir.md';
+        let filterFn = null;
+
+        if (val === 'pierre') {
+            filename = 'questions-pierre.md';
+        } else if (val === 'important') {
+            filterFn = c => c.isImportant;
         }
+
+        const deckCards = await loadDeckFromFile(filename);
+
+        if (filterFn) {
+            cards = deckCards.filter(filterFn);
+        } else {
+            cards = [...deckCards];
+        }
+
         currentIndex = 0;
         updateCard();
     });
