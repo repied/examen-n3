@@ -1,5 +1,3 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
 {
     "name": "Web Dev DevContainer",
     "build": {
@@ -17,6 +15,7 @@
                 "terminal.integrated.shell.linux": "/bin/bash"
             },
             "extensions": [
+                "ms-playwright.playwright",
                 "ritwickdey.liveserver",
                 "usernamehw.errorlens",
                 "wayou.vscode-todo-highlight",
