@@ -1,7 +1,6 @@
 async function initApp() {
     let cards = [];
     let currentIndex = 0;
-    let showOnlyImportant = false;
     let allCards = [];
 
     const cardElement = document.getElementById('card');
@@ -9,6 +8,7 @@ async function initApp() {
     const backText = document.getElementById('back-text');
     const cardIndexInput = document.getElementById('cardIndexInput');
     const totalCardsSpan = document.getElementById('totalCards');
+    const deckSelect = document.getElementById('deckSelect');
 
     // 1. Fetch the content
     try {
@@ -175,17 +175,12 @@ async function initApp() {
     }
 
     // 5. Event Listeners
-    const filterBtn = document.getElementById('filterBtn');
-    filterBtn.addEventListener('click', () => {
-        showOnlyImportant = !showOnlyImportant;
-        if (showOnlyImportant) {
+    deckSelect.addEventListener('change', () => {
+        const val = deckSelect.value;
+        if (val === 'important') {
             cards = allCards.filter(c => c.isImportant);
-            filterBtn.innerText = "Toutes les questions";
-            filterBtn.classList.add('active-filter');
         } else {
             cards = [...allCards];
-            filterBtn.innerText = "Questions éliminatoires seulement";
-            filterBtn.classList.remove('active-filter');
         }
         currentIndex = 0;
         updateCard();

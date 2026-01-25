@@ -168,25 +168,6 @@ button:active {
     transform: scale(0.96);
 }
 
-button#filterBtn {
-    background-color: #fef2f2;
-    color: #991b1b;
-    border: 1px solid #fee2e2;
-}
-
-button#filterBtn:hover {
-    background-color: #dc2626;
-    color: white;
-    border-color: #dc2626;
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-}
-
-button#filterBtn.active-filter {
-    background-color: #991b1b !important;
-    color: white !important;
-    border-color: #991b1b !important;
-}
-
 /* Swipe Animations */
 @keyframes slideOutLeft {
     to {

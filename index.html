@@ -25,6 +25,12 @@
 
     <h1>Examen N3</h1>
     <div class="progress" id="progress">
+        <select id="deckSelect"
+            style="border: 1px solid #ccc; border-radius: 4px; font-size: inherit; color: inherit; background: transparent; padding: 2px;">
+            <option value="all">PlongéePlaisir (toutes)</option>
+            <option value="important">PlongéePlaisir (éliminatoires)</option>
+        </select>
+        <span style="margin: 0 8px;">|</span>
         Question <input type="number" id="cardIndexInput" min="1" value="1"
             style="width: 50px; text-align: center; border: 1px solid #ccc; border-radius: 4px; font-size: inherit; color: inherit; background: transparent;">
         sur <span id="totalCards">0</span>
@@ -46,10 +52,6 @@
         <button id="prevBtn">Précédent</button>
         <button id="randomBtn">Aléatoire</button>
         <button id="nextBtn">Suivant</button>
-    </div>
-
-    <div style="margin-top: 28px;">
-        <button id="filterBtn">Questions éliminatoires seulement</button>
     </div>
 
     <script src="script.js"></script>
