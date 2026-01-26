@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.beforeEach(async ({ page }) => {
     page.on('console', msg => console.log('BROWSER LOG:', msg.text()));
     await page.addInitScript(() => {
-        window.localStorage.setItem('unlocked_n3', 'true');
+        window.localStorage.setItem('unlocked_n3_v2', 'true');
     });
 });
 

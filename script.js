@@ -434,8 +434,8 @@ async function initApp() {
 // Initialize behind a simple password gate
 (function () {
     // Store only the SHA-256 hash of the normalized password (lowercased + trimmed)
-    const GATE_HASH = '70b50f3421e614638c69b7cd87aaf01f6614eb6a1479c3d6d64d8ed74ce72f69';
-    const unlockedKey = 'unlocked_n3';
+    const GATE_HASH = 'ee45b59fca3856f1205157a85f071d7d2222a1dc42ae2bcb2c38aa5a6f58d04e';
+    const unlockedKey = 'unlocked_n3_v2';
 
     const gate = document.getElementById('gate');
     const passwordInput = document.getElementById('passwordInput');
