@@ -94,16 +94,16 @@ async function initApp() {
             const sectionTitle = lines[0].trim();
             const content = lines.slice(1).join('\n');
 
-            // Allow optional space after ** and optional dot after number
-            const questionRegex = /\*\*\s*(\d+(?:\s+xx)?)\.?\s*([\s\S]*?)\*\*\s*([\s\S]*?)(?=\n\s*(?:\*\*\d+|#|---)|$)/g;
+            // Accept question headings as either "**1 Question**" or "**Question**"
+            const questionRegex = /\*\*\s*(?:(\d+)\s+)?([\s\S]*?)\*\*\s*([\s\S]*?)(?=\n\s*\*\*|\n\s*#|\n\s*---|$)/g;
 
             let match;
             while ((match = questionRegex.exec(content)) !== null) {
                 const fullQuestionLine = match[0];
-                // match[1] is number, match[2] is question, match[3] is answer
+                // match[1] is optional number, match[2] is question, match[3] is answer
                 const question = match[2].trim();
                 const answer = match[3].trim();
-                const isImportant = fullQuestionLine.includes(' xx');
+                const isImportant = /\*\*\s*\d+\s+xx\b/i.test(fullQuestionLine);
 
                 const parseMD = (txt) => {
                     let lines = txt.split('\n').map(l => l.trim()).filter(l => l !== '');
@@ -153,7 +153,7 @@ async function initApp() {
             return deckCache[filename];
         }
         try {
-            const response = await fetch(filename);
+            const response = await fetch(filename, { cache: 'no-store' });
             if (!response.ok) throw new Error(`Failed to fetch ${filename}`);
             const rawText = await response.text();
             const parsed = parseContent(rawText);
@@ -183,9 +183,12 @@ async function initApp() {
         isImportant: false
     };
 
-    // Initial load
+    // Initial load (default to Pierre deck)
     await (async () => {
-        const initialCards = await loadDeckFromFile('questions-plongeeplaisir.md');
+        if (deckSelect) {
+            deckSelect.value = 'pierre';
+        }
+        const initialCards = await loadDeckFromFile('questions-pierre.md');
         cards = [helpCard, ...initialCards];
         updateCard();
         // Ensure controls visibility is correct on initial load

@@ -18,6 +18,9 @@ test('app loads and shows main elements', async ({ page }) => {
 test('dropdown filters important questions', async ({ page }) => {
     await page.goto('/');
 
+    // Start from the full PlongeePlaisir deck for deterministic filtering assertions
+    await page.selectOption('#deckSelect', 'all');
+
     // Get initial count (parsed cards + 1 help card)
     const totalElement = page.locator('#totalCards');
     await expect(totalElement).not.toHaveText('0');
