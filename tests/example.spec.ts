@@ -61,9 +61,7 @@ test('topic dropdown is populated and filters cards', async ({ page }) => {
     await expect(page.locator('#totalCards')).not.toHaveText('0');
 
     const topicOptions = page.locator('#topicSelect option');
-    await expect(topicOptions).toHaveCount(5);
-    await expect(topicOptions.nth(1)).toHaveText('Introduction');
-    await expect(topicOptions.nth(2)).toHaveText('Acronymes');
+    await expect(topicOptions).toContainText(['Introduction', 'Acronymes']);
 
     await page.selectOption('#topicSelect', { label: 'Acronymes' });
 

@@ -48,6 +48,11 @@ Réaction et Intervention Face aux Accidents de Plongée
 **DP**
 Directeur de Plongée
 
+**SP**
+Surpression pulmonaire.
+
+**OPI**
+Oedème pulmonaire d'immersion
 ---
 ## Réglementation
 
@@ -164,3 +169,116 @@ perte couleur (rouge)
 **Déformation acoustique ?**
 vitesse du son 4.5 fois plus rapide
 faire un 360 pour localiser les sons
+
+
+---
+## Barotraumatismes
+
+**Liste des barotraumatismes**
+sinus
+oreille
+masque
+dents
+poumons
+estomac intestin
+
+**Oreille moyenne: cause et conduite**
+Forcer sans compenser, douleur, risque déchirure tympan ==> Remonter et consulter.
+Trop de manœuvres ==> Otite==> consulter.
+Bouchon, douleur ==> remonter consulter. 
+Coup de piston (compensation trop tard) ==> douleur vive, risque lésion ==> ORL d'urgence, caisson.
+Une seule oreille==> vertige==> remonter
+
+**barotraumatismes à la remontée**
+Compense pas, risque lésion, remonter lentement et se moucher.
+Valsalva à la remontée, risque lésion, médecin si douleur.
+Une seule oreille, vertige, assistance, stop, remonter lentement, trouver un appui.
+
+**Différentes parties d'une oreille**
+Pavillon
+conduit
+tympan
+marteau
+enclume
+étrier
+canaux semi-circulaires
+vestibule
+cochlée
+trompe d'Eustache
+
+**Oreille Prévention**
+Pas plonger si enrhumée.
+Nettoyer le nez au sérum physiologique.
+compenser dès le premier mètre.
+Ne pas forcer.
+Dégagez Cagoule.
+Remonté quelques mètres.
+Technique douce, frenzel, btv, déglutition.
+Pas de spray vasodilatateur.
+Pas de manœuvre active à la remontée.
+Rincer à l'eau douce.
+Ne pas replonger après accident avant ORL.
+
+**Cause surpression pulmonaire**
+  Entre zéro et dix mètres
+ Panique
+ essoufflement
+ glotte bloquée, 
+ panne d'air.
+**Symptomes surpression pulmonaire**
+douleur thoracique à la sortie
+voix rauque tout sèche
+mousse rosâtre
+difficulté respiratoire manque d'air
+état de choc baisse de tension
+palpitation trouble neuraux
+cyanose (levres bleues)
+crépitement gazeux sous peau
+peau craquelée
+coup gonflé
+perte de connaissance mort
+ADD
+
+**Conduite surpression pulmonaire**
+agir vite 
+RIFA-P
+sortir déshabiller
+ranimer si besoin
+oxygène 100% 15L/min
+pls
+couverture
+appeler secours
+hôpital caisson
+
+**Preventions surpression pulmonaire**
+Pas d'apnée en plongée
+réflexe d'expiration contrôlée
+entretien du matériel
+veiller sur les coéquipiers
+ne pas donner des tendeurs apnéeistes.
+
+**Récapitulatif barotraumatismes**
+Sinus | descente + remontée | sinus obstrués | douleur, saignements
+Oreille externe | descente | conduit auditif bouché | otite barotraumatique
+Oreille moyenne | descente | trompe d'Eustache fermée | otite barotraumatique
+Oreille moyenne | remontée | blocage d'une oreille | vertiges alternobariques
+Oreille interne | descente | coup de piston | douleurs, acouphènes
+Masque - combi | descente | placage masque (squeeze) | problèmes oculaires, marques
+Dents | descente + remontée | cavité dentaire | douleur, éclatement dent
+Poumons | remontée | expiration bloquée | surpression pulmonaire
+Tube digestif | remontée | gaz bloqués | douleurs, lésions
+
+**OPI**
+Oedème pulmonaire d'immersion
+Cause: froid, effort, âge, stress, bulle,
+Consequence: liquide dans les alvéoles, ADD, sensation de manque d'air, avant 10m, 
+Symptomes: toux, essoufflement, crépitement, cyanose, procédure RIFA-P.
+
+**RIFA-P liste actions**
+Sortir
+déshabiller
+oxygène 100% 15L/min
+couvrir
+PLS ou semi-assis
+appeler secours
+évacuation
