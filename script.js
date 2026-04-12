@@ -11,6 +11,26 @@ async function initApp() {
     const cardIndexInput = document.getElementById('cardIndexInput');
     const totalCardsSpan = document.getElementById('totalCards');
     const deckSelect = document.getElementById('deckSelect');
+    const topicSelect = document.getElementById('topicSelect');
+
+    const ALL_TOPICS_VALUE = '__all_topics__';
+    let currentSetCards = [];
+
+    function getCardTopic(card) {
+        if (card && card.topic) {
+            return card.topic;
+        }
+
+        // Backward-compatible fallback: infer section title from the front HTML.
+        if (card && typeof card.q === 'string') {
+            const match = card.q.match(/text-transform:\s*uppercase;">\s*([^<]+)\s*<\/div>/i);
+            if (match && match[1]) {
+                return match[1].trim();
+            }
+        }
+
+        return 'Général';
+    }
 
     // Progress controls (prev/random/next) — now located in the progress bar
     const progressControls = document.querySelector('.progress__controls');
@@ -141,6 +161,7 @@ async function initApp() {
                 extractedCards.push({
                     q: `<div style="font-size: 0.7em; opacity: 0.7; margin-bottom: 8px; text-transform: uppercase;">${sectionTitle}</div><div>${parseMD(question)}</div>`,
                     a: parseMD(answer),
+                    topic: sectionTitle,
                     isImportant: isImportant
                 });
             }
@@ -167,30 +188,74 @@ async function initApp() {
         }
     };
 
-    // Help/Instruction card in French
-    const helpCard = {
-        q: `<div style="font-size: 0.7em; opacity: 0.7; margin-bottom: 8px; text-transform: uppercase;">🤿 Aide 🤿</div>
-            <div style="text-align: left;"> 
-                    👆 <strong>Cliquez</strong> sur une carte (ou barre espace) pour voir la réponse.<br>
-                    ↔️ <strong>Swippez</strong> (ou flèches) pour changer de question.<br>
-                    🎲 Pour une question aléatoire.<br>
-                    🔼 Le jeux de question peut être changé.<br>
-            </div>`,
-        a: `<div style="font-size: 1.2em; font-weight: bold; margin-bottom: 15px;">Bonnes révisions !</div>
-            <p style="text-align: left;">Cette application est conçue pour vous aider à préparer l'examen N3.</p>
-            <p style="text-align: left;">Source <a href="https://www.plongee-plaisir.com/fr/book/plongee-niveau-3/" target="_blank" rel="noopener noreferrer">Plongée Plaisir</a>.</p>
-            `,
-        isImportant: false
-    };
+    function rebuildTopicOptions(deckCards) {
+        if (!topicSelect) return;
+
+        const seenTopics = new Set();
+        const topics = [];
+
+        deckCards.forEach((card) => {
+            const topic = getCardTopic(card);
+            if (!topic || seenTopics.has(topic)) return;
+            seenTopics.add(topic);
+            topics.push(topic);
+        });
+
+        topicSelect.innerHTML = '';
+
+        const allOption = document.createElement('option');
+        allOption.value = ALL_TOPICS_VALUE;
+        allOption.textContent = topics.length > 0 ? `Tous les thèmes (${topics.length})` : 'Aucun thème disponible';
+        topicSelect.appendChild(allOption);
+
+        topics.forEach((topic) => {
+            const option = document.createElement('option');
+            option.value = topic;
+            option.textContent = topic;
+            topicSelect.appendChild(option);
+        });
+
+        topicSelect.value = ALL_TOPICS_VALUE;
+        topicSelect.disabled = topics.length === 0;
+    }
+
+    function applyFiltersAndRender() {
+        const selectedTopic = topicSelect ? topicSelect.value : ALL_TOPICS_VALUE;
+
+        const filteredByTopic = selectedTopic === ALL_TOPICS_VALUE
+            ? currentSetCards
+            : currentSetCards.filter(card => getCardTopic(card) === selectedTopic);
+
+        cards = filteredByTopic;
+
+        currentIndex = 0;
+        updateCard();
+    }
+
+    async function loadDeckSelection() {
+        const val = deckSelect ? deckSelect.value : 'pierre';
+        let filename = 'questions-plongeeplaisir.md';
+        let filterFn = null;
+
+        if (val === 'pierre') {
+            filename = 'questions-pierre.md';
+        } else if (val === 'important') {
+            filterFn = c => c.isImportant;
+        }
+
+        const deckCards = await loadDeckFromFile(filename);
+        currentSetCards = filterFn ? deckCards.filter(filterFn) : deckCards;
+
+        rebuildTopicOptions(currentSetCards);
+        applyFiltersAndRender();
+    }
 
     // Initial load (default to Pierre deck)
     await (async () => {
         if (deckSelect) {
             deckSelect.value = 'pierre';
         }
-        const initialCards = await loadDeckFromFile('questions-pierre.md');
-        cards = [helpCard, ...initialCards];
-        updateCard();
+        await loadDeckSelection();
         // Ensure controls visibility is correct on initial load
         updateControlsVisibility();
     })();
@@ -299,28 +364,13 @@ async function initApp() {
     }
 
     // 5. Event Listeners
-    deckSelect.addEventListener('change', async () => {
-        const val = deckSelect.value;
-        let filename = 'questions-plongeeplaisir.md';
-        let filterFn = null;
+    if (deckSelect) {
+        deckSelect.addEventListener('change', loadDeckSelection);
+    }
 
-        if (val === 'pierre') {
-            filename = 'questions-pierre.md';
-        } else if (val === 'important') {
-            filterFn = c => c.isImportant;
-        }
-
-        const deckCards = await loadDeckFromFile(filename);
-
-        if (filterFn) {
-            cards = deckCards.filter(filterFn);
-        } else {
-            cards = [helpCard, ...deckCards];
-        }
-
-        currentIndex = 0;
-        updateCard();
-    });
+    if (topicSelect) {
+        topicSelect.addEventListener('change', applyFiltersAndRender);
+    }
 
     cardIndexInput.addEventListener('change', () => {
         let val = parseInt(cardIndexInput.value);

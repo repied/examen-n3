@@ -83,6 +83,21 @@ h1 {
     max-width: 100%;
 }
 
+.progress-select {
+    color: #0f172a !important;
+    background: rgba(255, 255, 255, 0.92) !important;
+    min-width: 138px;
+}
+
+#topicSelect {
+    min-width: 170px;
+}
+
+.progress-select option {
+    color: #0f172a;
+    background: #ffffff;
+}
+
 @media (max-width: 480px) {
     .progress {
         padding: 2px 8px;
@@ -114,9 +129,13 @@ h1 {
     }
 
     .progress__info select {
-        max-width: 85px;
+        max-width: 130px;
         font-size: 0.75rem;
         border: none !important;
+    }
+
+    #topicSelect {
+        min-width: 118px;
     }
 
     .progress__info input {

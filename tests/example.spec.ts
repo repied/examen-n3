@@ -11,8 +11,8 @@ test('app loads and shows main elements', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('h1')).toHaveText('Examen N3');
     await expect(page.locator('#card')).toBeVisible();
-    // Initially shows the help card
-    await expect(page.locator('#front-text')).toContainText('Aide');
+    await expect(page.locator('#totalCards')).not.toHaveText('0');
+    await expect(page.locator('#front-text')).toContainText('Introduction');
 });
 
 test('dropdown filters important questions', async ({ page }) => {
@@ -21,14 +21,13 @@ test('dropdown filters important questions', async ({ page }) => {
     // Start from the full PlongeePlaisir deck for deterministic filtering assertions
     await page.selectOption('#deckSelect', 'all');
 
-    // Get initial count (parsed cards + 1 help card)
+    // Get initial count
     const totalElement = page.locator('#totalCards');
     await expect(totalElement).not.toHaveText('0');
-    // Help card is always there on 'all'
     const initialText = await totalElement.innerText();
     const initialCount = parseInt(initialText);
 
-    // Select important (help card is NOT important, so it should be filtered out)
+    // Select important
     await page.selectOption('#deckSelect', 'important');
 
     // Check count decreased
@@ -50,6 +49,24 @@ test('can switch to Pierre questions', async ({ page }) => {
     // Select Pierre's deck
     await page.selectOption('#deckSelect', 'pierre');
 
-    // We start at card 1 (the help card)
-    await expect(page.locator('#front-text')).toContainText('Aide');
+    await expect(page.locator('#front-text')).toContainText('Introduction');
+});
+
+test('topic dropdown is populated and filters cards', async ({ page }) => {
+    await page.goto('/');
+
+    await expect(page.locator('#totalCards')).not.toHaveText('0');
+
+    await page.selectOption('#deckSelect', 'pierre');
+    await expect(page.locator('#totalCards')).not.toHaveText('0');
+
+    const topicOptions = page.locator('#topicSelect option');
+    await expect(topicOptions).toHaveCount(5);
+    await expect(topicOptions.nth(1)).toHaveText('Introduction');
+    await expect(topicOptions.nth(2)).toHaveText('Acronymes');
+
+    await page.selectOption('#topicSelect', { label: 'Acronymes' });
+
+    await expect(page.locator('#totalCards')).not.toHaveText('0');
+    await expect(page.locator('#front-text')).toContainText('Acronymes');
 });
