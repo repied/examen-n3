@@ -1,65 +1,65 @@
 ## Introduction
 
-**Prérogatives N3 ?**
+**Prérogatives du N3 ?**
 PA40
 PA60 (si accord DP et >= 18 ans)
 PE60 (>= 18 ans)
 
-**Infos sur les accidents**
+**Statistiques sur les accidents ?**
 décès 20/an
 320/an 1/10k plongées
 1/30k plongées si <30m
 1/3k plongées si >40m
 ADD 70 % des accidents
-homme 50ans N3 en juin
-50% ADD  panne air
+homme 50 ans N3 en juin
+50% d'ADD liés à une panne d'air
 narcose / froid / essoufflement / ADD
 RIFAP = Réaction et Intervention Face aux Accidents de Plongée
 
 ---
 ## Acronymes
 
-**BAVU**
+**Que signifie BAVU ?**
 ballon auto-remplisseur à valve unidirectionnelle
 
-**CACI**
+**Que signifie CACI ?**
 certificat médical d'absence de contre-indication 
 
-**FFESSM**
+**Que signifie FFESSM ?**
 fédération française d'études et de sports sous-marins
 1955
 130k membres
 
-**CMAS**
+**Que signifie CMAS ?**
 confédération mondiale des activités subaquatiques
 1959
 130 pays
 
-**SAC**
+**Que signifie SAC ?**
 surface air consumption
 20L/min
 
-**MFT**
+**Que signifie MFT ?**
 Manuel de Formation Technique
 
-**RIFAP**
+**Que signifie RIFAP ?**
 Réaction et Intervention Face aux Accidents de Plongée
 
-**DP**
+**Qu'est-ce que le DP ?**
 Directeur de Plongée
 E1 si piscine ou fosse < 6m
 N5 si natural ou > 6m en exploration
 MF1 si natural ou > 6m en formation
 
-**SP**
+**Qu'est-ce que la SP ?**
 Surpression pulmonaire.
 
-**OPI**
+**Que signifie OPI ?**
 Oedème pulmonaire d'immersion
 ---
 ## Réglementation
 
-**Condition N3**
+**Conditions pour le N3 ?**
 >= 17 ans
 N2 ou équivalent
 licence FFESSM
@@ -84,21 +84,21 @@ non obligatoire pour : baptêmes,...
 qualification > aptitude (décision du DP)
 Aucune tolérance sur la profondeur
 
-**Niveaux de FFESSM**
+**Quels sont les niveaux de la FFESSM ?**
 N1 PE 20
 N2 PE40 PA20
 N3 PE60 PA40/PA60
 N4 Guide de palanquée
 N5 Directeur de plongée
 
-Encadement
+Encadrement
 E1: N2 ou N3 + intiateur
 E2: N4 + initiateur
 E3: MF1 ou BEES1
 E4: MF2 ou BEES2
 
 
-**Notion de palanquée : définition**
+**Définition d'une palanquée ?**
 = groupe de plongeurs mêmes caractéristiques (durée, profondeur, trajet)
 En formation : 1 encadrant + 4 élèves 
 En autonomie : 2 ou 3
@@ -122,7 +122,7 @@ Un équipement alimenter équipier (octopus)
 Un équipement de contrôle remontée (ordinateur)
 Un parachute de palier par palanquée
 
-**Matériel bateau**
+**Matériel obligatoire sur le bateau ?**
 1. communication secours (VHF en mer, téléphone, etc.)
 2. Eau douce potable non gazeuse
 3. BAVU avec 3 masques (grand, moyen, petit) + masque haute concentration
@@ -145,32 +145,32 @@ Si pas tiers responsable: assurance complémentaire personnelle
 
 ---
 ## Physique et physiologie
-**Unités**
+**Unités et constantes utiles ?**
 1 L = 1 dm³ -- 1 bar = 1 kg/cm²
 eau douce = 1 kg/L -- eau de mer = 1,025 kg/L
 acier = 7,8 kg/L -- aluminium = 2,7 kg/L
-air a 1 bar = 1.2 g/L -- a 200 bar = 0.24 kg/L => 3.6kg pour 15L@200 bar 
+air à 1 bar = 1.2 g/L -- à 200 bar = 0.24 kg/L => 3.6kg pour 15L@200 bar 
 P = P_atm + 1 bar tous les 10 m
 
 **Poussée d'Archimède : définition et formule ?**
-Poussée d'Archimède = poussé bas en haut du poids du fluide déplacé
-1 homme (76L 75kg) combi (5L 1kg) boc (16L 18kg) détendeur (1L 2kg) ==> total (98L 96kg) ==> 2kg de lest
+Poussée d'Archimède = poussée de bas en haut du poids du fluide déplacé
+1 homme (76L 75kg) combi (5L 1kg) bloc (16L 18kg) détendeur (1L 2kg) ==> total (98L 96kg) ==> 2kg de lest
 Evolution: V baisse avec P, poids air baisse avec temps. bloc 15L à 200 bar = 3.6kg
 Réglage au palier bloc vide
 
 **Loi de Boyle-Mariotte ?**
 Compressibilité: P V = constante
 SAC = 20L/min
-bloc de 15L apport 5 minutes de plus a 50m (vs 12L)
+bloc de 15L apporte 5 minutes de plus à 50m (vs 12L)
 Gilet 20L
 Influence de T: 40 deg font perdre 40 bars
 
 **Loi de Dalton ?**
 Pression absolue est la somme des pressions partielles (pp) des gaz composants
 N2 : 78%, O2 : 21%
-N2 toxique a 5.6bar => 61.8m
-O2 toxique a 1.6 bar => 66.2m (40m si nitrox 32%)
-Code du sport: 60m a l'air
+N2 toxique à 5.6 bar => 61.8m
+O2 toxique à 1.6 bar => 66.2m (40m si nitrox 32%)
+Code du sport: 60m à l'air
 pp => Accidents biochimiques
 
 **Loi de Henry ?**
@@ -191,7 +191,7 @@ faire un 360 pour localiser les sons
 ---
 ## Barotraumatismes
 
-**Liste des barotraumatismes**
+**Quels sont les barotraumatismes ?**
 sinus
 oreille
 masque
@@ -199,19 +199,19 @@ dents
 poumons
 estomac intestin
 
-**Oreille moyenne: cause et conduite**
+**Oreille moyenne : causes et conduite ?**
 Forcer sans compenser, douleur, risque déchirure tympan ==> Remonter et consulter.
 Trop de manœuvres ==> Otite==> consulter.
 Bouchon, douleur ==> remonter consulter. 
 Coup de piston (compensation trop tard) ==> douleur vive, risque lésion ==> ORL d'urgence, caisson.
 Une seule oreille==> vertige==> remonter
 
-**barotraumatismes à la remontée**
+**Quels barotraumatismes à la remontée ?**
 Compense pas, risque lésion, remonter lentement et se moucher.
 Valsalva à la remontée, risque lésion, médecin si douleur.
 Une seule oreille, vertige, assistance, stop, remonter lentement, trouver un appui.
 
-**Différentes parties d'une oreille**
+**Quelles sont les parties de l'oreille ?**
 Pavillon
 conduit
 tympan
@@ -223,40 +223,40 @@ vestibule
 cochlée
 trompe d'Eustache
 
-**Oreille Prévention**
-Pas plonger si enrhumée.
+**Prévention des problèmes d'oreilles ?**
+Pas plonger si enrhumé.
 Nettoyer le nez au sérum physiologique.
 compenser dès le premier mètre.
 Ne pas forcer.
 Dégagez Cagoule.
-Remonté quelques mètres.
+Remonter quelques mètres.
 Technique douce, frenzel, btv, déglutition.
 Pas de spray vasodilatateur.
 Pas de manœuvre active à la remontée.
 Rincer à l'eau douce.
 Ne pas replonger après accident avant ORL.
 
-**Cause surpression pulmonaire**
+**Causes de la surpression pulmonaire ?**
   Entre zéro et dix mètres
  Panique
  essoufflement
  glotte bloquée, 
  panne d'air.
-**Symptomes surpression pulmonaire**
+**Symptômes de la surpression pulmonaire ?**
 douleur thoracique à la sortie
-voix rauque tout sèche
+voix rauque toux sèche
 mousse rosâtre
 difficulté respiratoire manque d'air
 état de choc baisse de tension
-palpitation trouble neuraux
-cyanose (levres bleues)
+palpitation trouble nerveux
+cyanose (lèvres bleues)
 crépitement gazeux sous peau
 peau craquelée
-coup gonflé
+cou gonflé
 perte de connaissance mort
 ADD
 
-**Conduite surpression pulmonaire**
+**Conduite à tenir en cas de SP ?**
 agir vite 
 RIFA-P
 sortir déshabiller
@@ -267,14 +267,14 @@ couverture
 appeler secours
 hôpital caisson
 
-**Preventions surpression pulmonaire**
+**Prévention de la surpression pulmonaire ?**
 Pas d'apnée en plongée
 réflexe d'expiration contrôlée
 entretien du matériel
 veiller sur les coéquipiers
-ne pas donner des tendeurs apnéeistes.
+ne pas donner des détendeurs apnéeistes.
 
-**Récapitulatif barotraumatismes**
+**Tableau récapitulatif des barotraumatismes ?**
 Sinus | descente + remontée | sinus obstrués | douleur, saignements
 Oreille externe | descente | conduit auditif bouché | otite barotraumatique
 Oreille moyenne | descente | trompe d'Eustache fermée | otite barotraumatique
@@ -285,13 +285,13 @@ Dents | descente + remontée | cavité dentaire | douleur, éclatement dent
 Poumons | remontée | expiration bloquée | surpression pulmonaire
 Tube digestif | remontée | gaz bloqués | douleurs, lésions
 
-**OPI**
+**Qu'est-ce que l'OPI ?**
 Oedème pulmonaire d'immersion
 Cause: froid, effort, âge, stress, bulle,
 Consequence: liquide dans les alvéoles, ADD, sensation de manque d'air, avant 10m, 
 Symptomes: toux, essoufflement, crépitement, cyanose, procédure RIFA-P.
 
-**RIFA-P liste actions**
+**Actions du RIFA-P ?**
 Sortir
 déshabiller
 oxygène 100% 15L/min
@@ -303,22 +303,22 @@ appeler secours
 ---
 ## Accident biochimique
 
-**Seuils toxicité**
+**Seuils de toxicité des gaz ?**
 gaz | % | pp | profondeur
 N2 | 78% | 5.6 | 61.8m
 O2 | 21% | 1.6 | 66.2m
 CO2 | 0.04% | 0.2 | 490m
 
-**Essoufflement cause**
+**Causes de l'essoufflement ?**
 Co2 pas eliminé -> cercle vicieux
 Fatigue stress Froid effort apnee materiel profondeur
 
-**Essoufflement symptomes**
-suffocation panique enveie remonter
-agité repi anarchique rejet detenderu
+**Symptômes de l'essoufflement ?**
+suffocation panique envie remonter
+agité respi anarchique rejet détendeur
 50 a 100L/min 
 
-**Essoufflement conduite**
+**Conduite à tenir (essoufflement) ?**
 assistance fin de plongee
 majoration paliers
 pas de successive
@@ -327,32 +327,32 @@ se calmer
 risque: panne air ADD SP
 
 
-**Hyperoxie seuils**
+**Seuils de l'hyperoxie ?**
 0.16 < ppo2 < 1.6 bar>>
 hyperventilation==>hyperoxie avant manque air Co2
 
-**Hyperoxie symptomes**
+**Symptômes de l'hyperoxie ?**
 Troubles visuels
 convulsions
 syncope
 tétanie
 noyade.
-**Hyperoxie conduite**
+**Conduite à tenir (hyperoxie) ?**
 Assistance
-remtter detendeur (syncope)
+remettre detendeur (syncope)
 attendre reprise respi
 remonter
 
-**Hypoxie conduite**
+**Conduite à tenir (hypoxie) ?**
 sortie
 reanimation
 oxygenotherapie
 
-**Narcose N2 seuils**
+**Seuils de la narcose à l'azote ?**
 30m | 40m | 60m = 5.6bar
 debut | tous | danger
 
-**Narcose facteurs**
+**Facteurs favorisant la narcose ?**
 Personnel
 forme
 stress
@@ -362,7 +362,7 @@ visibilité
 tête en bas
 froid.
 
-**Narcose symptomes**
+**Symptômes de la narcose ?**
 Euphorie
 oppression
 dialogue intérieur
@@ -375,13 +375,13 @@ agitation
 prostration
 incohérence.
 
-**Narcose conduite**
+**Conduite à tenir (narcose) ?**
 Assistance immédiate
 remonter quelques mètres
 ne pas redescendre
 IPD
 
-**Narcose prevention**
+**Prévention de la narcose ?**
 Descendes progressives
 tête en haut
 pas de bascule
@@ -392,21 +392,21 @@ plonger profondes progressivement
 
 ---
 ## ADD
-**ADD intro**
+**Introduction aux ADD ?**
 Formation de bulle N2 dans l'organisme
-60% des ADD a + de 40 mètres
+60% des ADD à + de 40 mètres
 70% des accidents graves
 1 sur 10 000 plongées
 80% des ADD avec procédure OK
 50 ans 50 mètres 50 kg juin N3 N4
 Embolie égale blocage vaisseau
 
-**FOP**
+**Qu'est-ce que le FOP ?**
 Foramen Ovale Permeable
-sang -> corps au lei poumons
+sang -> corps au lieu poumons
 Cause: respi bloquee, effort
 
-**localisation bulles**
+**Où se localisent les bulles ?**
 bends= articulation
 puce et mouton =peau
 oreille 
@@ -415,31 +415,31 @@ vasculaire stagnante = manchon
 localisation veineuse = moelle épinière / poumon
 artérielle = AVC / oreille interne
 
-**ADD gravité 1 et 2**
+**Gravité des ADD (type 1 et 2) ?**
 1 : Mineur, fatigue, peau, douleur articulaire, musculaire, douze 24 heures.
 2 : Majeur
-Neuros 40% médulaire
+Neuros 40% médullaire
 Cérébro 5%
 Labyrinthique 25%
 Cardio respiratoire
 Symptômes en une heure, 85%
 
-Symptômes: neurovertiges, nausée, gène respiratoire, médulaire, coup de poignard
+Symptômes: neurovertiges, nausée, gêne respiratoire, médullaire, coup de poignard
 
-**ADD facteurs**
+**Facteurs favorisants de l'ADD ?**
 Q = prof * sqrt T : 30min@60m = proba ADD 1/10
 
 Autres facteurs : 
-pannne d'air
+panne d'air
 mauvaise planification 
 ordinateur mal réglé
 effort
 facteur individuel age poids stress 
-profil à risque : plus de deux plongées, yo yo, trop près de la courbe de sécurité vitesse de remontée, palier raté
+profil à risque : plus de deux plongées, yoyo, trop près de la courbe de sécurité vitesse de remontée, palier raté
 froid
 
 
-**ADD conduite**
+**Conduite à tenir (ADD) ?**
 Prévenir le DP
 sortie
 pas de réimmersion
@@ -449,9 +449,9 @@ secours
 donner de l'eau
 couverture
 fiche évacuation
-surveiller la balanquée.
+surveiller la palanquée.
 
-**ADD prévention**
+**Prévention de l'ADD ?**
 AVANT
 Planification
 bien équipé chaud
@@ -462,7 +462,7 @@ PENDANT
 Respecter la planif
 pas d'effort
 pas d'apnée
-pas de val salva à la montée. Après
+pas de valsalva à la montée.
 
 APRES
 boire
@@ -471,7 +471,7 @@ pas d'avion en 24 heures
 
 RESUME:
 Adapter au contexte : santé / météo / pas de performance / savoir renoncer
-l'ordine n'est qu'une aide
+l'ordinateur n'est qu'une aide
 observer les coéquipiers
 attention au déni
 dans le doute agir
@@ -479,29 +479,29 @@ dans le doute agir
 ---
 ## Désaturation
 
-**Defintion gradient, tension et modèle de désaturation**
+**Définitions : gradient, tension et modèle ?**
 Gradient : différence de pression entre deux milieux
 tension : pression exercée par les gaz dissous sur un liquide ou un tissu.
 modèle de désaturation :  Modèle mathématique qui décrit l'élimination des gaz inertes dissous afin de prévenir les ADD.
 
-**Haldane**
+**Modèle d'Haldane ?**
 108 premieres tables
 5 compartiments
 demi vies
-Coef_sat = T_N2 / Pabs a des limites
+Coef_sat = T_N2 / Pabs à des limites
 
-**Buhlmann**
+**Modèle de Bühlmann ?**
 Pression alveolaire 6% H2O
 ZHL  16C
 M-values 
 Gradiant facors bas/haut
 
-**Autre modeles**
+**Autres modèles de désaturation ?**
 VPM (bulles, paliers profond, ne pas utiliser)
-RGBM hypbrid
+RGBM hybrid
 MN90 12h avt avion mini (24h mieux), Haldanien 12 compartiments
 
-**Ordinateurs: procedure**
+**Procédure à l'ordinateur ?**
 Obligatoire pour l'autonomie
 planification en fonction du plus contraignant
 communiquer les réglages avant
@@ -512,19 +512,19 @@ respecter la vitesse de remontée et les paliers
 majorer si des problèmes
 respecter le palier optionnel des coéquipiers.
 
-**ORdianteurs limites**
+**Limites des ordinateurs ?**
 Bien connaître, personnel, théorique,
 panne et blocage possible,
 profil à risque et remontée rapide pas interdits
-pas de surpénalisation plongee successive
+pas de surpénalisation plongée successive
 
-**Procédure suite à remonter rapide FFESSM**
+**Procédure de remontée rapide (FFESSM) ?**
 Moins de 3 minutes en surface
 retour à mi-profondeur 5 minutes
 palier à minima: 1'@6m, 5'@3m.
 
 ---
-## Plannification
+## Planification
 **Pourquoi planification?**
 N3 = plongée profonde,
 moins d'air
@@ -534,14 +534,14 @@ environnement plus rigoureux
 ==> prévoir l'imprévu
 ==> planification indispensable.
 
-**Choix du site.**
+**Comment choisir le site ?**
 Règles locales
 distance de la côte
 caractéristiques et point de repère
 aptitude
 carte utiles
 
-**Eléments de planification**
+**Éléments de planification ?**
 Ordres DP et/ou code du sport
 choix du site
 choix profil parcours palier
@@ -564,7 +564,7 @@ Matériel
 Ordinateur Réglages
 Choix du Gaz
 
-**Pendat la plongée**
+**Pendant la plongée ?**
 suivre le plan
 noter les critères sur des tablettes possibles
 communication
@@ -572,18 +572,18 @@ communication
 si imprévu==> réduire les paramètres ou remonter
 
 ---
-## Materiel
-**Matériel obligatoire**
+## Matériel
+**Quel est le matériel obligatoire ?**
 bouteille manomètre
 gilets permettant de remonter et de se maintenir en surface
 dispositif pour partager l'air sans partage d'embout octopus
-dispositif pour contrôler characteristique plongée et la remontee ordinateur ou tables
+dispositif pour contrôler caractéristique plongée et la remontée ordinateur ou tables
 1 parachute un par palanquée.
 
-**Blocs**
+**Caractéristiques des blocs ?**
 8-18L
 200-300bar
 
-**Detendeurs**
-HP ->MP (P_amb+10bar) -> BP (P_amb)
+**Fonctionnement des détendeurs ?**
+HP -> MP (P_amb+10bar) -> BP (P_amb)
 Premier étage et deuxième étage peuvent être compensés.
