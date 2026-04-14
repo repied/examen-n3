@@ -482,6 +482,68 @@ async function initApp() {
                 break;
         }
     });
+
+    // Course Modal Logic
+    const coursModal = document.getElementById('coursModal');
+    const showCoursBtn = document.getElementById('showCoursBtn');
+    const closeCoursBtn = document.getElementById('closeCoursBtn');
+    const coursList = document.getElementById('coursList');
+
+    const PDF_COURS = [
+        "1_Introduction_Cours PN3_Xavier Sterlin_2026_IndB.pdf",
+        "202-02-17_Le matériel_Cours PN3_Xavier Sterlin_2026_IndB.pdf",
+        "2_Réglementation_Cours PN3_Xavier Sterlin_2026_IndC.pdf",
+        "3_Physique-Physiologie_Cours PN3_Xavier Sterlin_2026_IndC.pdf",
+        "4_Barotraumatismes+OPI_Cours PN3_Xavier Sterlin_2026_IndB.pdf",
+        "5_Accidents biochimiques_Cours PN3_Xavier Sterlin_2026_IndA.pdf",
+        "6_Les ADD_Cours PN3_Xavier Sterlin_2026_IndD.pdf",
+        "7_Procédures de désaturation et ordinateurs_Cours PN3_Xavier Sterlin_2026_IndC.pdf",
+        "8_La planification_Cours PN3_Xavier Sterlin_2026_IndB.pdf"
+    ];
+
+    function populateCours() {
+        if (!coursList) return;
+        coursList.innerHTML = '';
+        PDF_COURS.forEach(pdf => {
+            const a = document.createElement('a');
+            a.href = `cours/${pdf}`;
+            a.target = '_blank';
+            a.className = 'cours-link';
+
+            // Clean up name for display: remove prefix/suffix
+            const cleanName = pdf.replace(/_Cours PN3_Xavier Sterlin_2026_Ind[A-D]\.pdf$/, '')
+                .replace(/^[0-9-_]+/, '');
+
+            a.textContent = cleanName || pdf;
+            coursList.appendChild(a);
+        });
+    }
+
+    function openModal() {
+        if (coursModal) {
+            coursModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            populateCours();
+        }
+    }
+
+    function closeModal() {
+        if (coursModal) {
+            coursModal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (showCoursBtn) showCoursBtn.addEventListener('click', openModal);
+    if (closeCoursBtn) closeCoursBtn.addEventListener('click', closeModal);
+
+    window.addEventListener('click', (e) => {
+        if (e.target === coursModal) closeModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
 }
 
 // Initialize behind a simple password gate
