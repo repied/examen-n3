@@ -47,6 +47,9 @@ Réaction et Intervention Face aux Accidents de Plongée
 
 **DP**
 Directeur de Plongée
+E1 si piscine ou fosse < 6m
+N5 si natural ou > 6m en exploration
+MF1 si natural ou > 6m en formation
 
 **SP**
 Surpression pulmonaire.
@@ -80,6 +83,20 @@ non obligatoire pour : baptêmes,...
 0 6 12 20 40 60 m
 qualification > aptitude (décision du DP)
 Aucune tolérance sur la profondeur
+
+**Niveaux de FFESSM**
+N1 PE 20
+N2 PE40 PA20
+N3 PE60 PA40/PA60
+N4 Guide de palanquée
+N5 Directeur de plongée
+
+Encadement
+E1: N2 ou N3 + intiateur
+E2: N4 + initiateur
+E3: MF1 ou BEES1
+E4: MF2 ou BEES2
+
 
 **Notion de palanquée : définition**
 = groupe de plongeurs mêmes caractéristiques (durée, profondeur, trajet)
@@ -282,3 +299,291 @@ couvrir
 PLS ou semi-assis
 appeler secours
 évacuation
+
+---
+## Accident biochimique
+
+**Seuils toxicité**
+gaz | % | pp | profondeur
+N2 | 78% | 5.6 | 61.8m
+O2 | 21% | 1.6 | 66.2m
+CO2 | 0.04% | 0.2 | 490m
+
+**Essoufflement cause**
+Co2 pas eliminé -> cercle vicieux
+Fatigue stress Froid effort apnee materiel profondeur
+
+**Essoufflement symptomes**
+suffocation panique enveie remonter
+agité repi anarchique rejet detenderu
+50 a 100L/min 
+
+**Essoufflement conduite**
+assistance fin de plongee
+majoration paliers
+pas de successive
+surveiller ADD
+se calmer
+risque: panne air ADD SP
+
+
+**Hyperoxie seuils**
+0.16 < ppo2 < 1.6 bar>>
+hyperventilation==>hyperoxie avant manque air Co2
+
+**Hyperoxie symptomes**
+Troubles visuels
+convulsions
+syncope
+tétanie
+noyade.
+**Hyperoxie conduite**
+Assistance
+remtter detendeur (syncope)
+attendre reprise respi
+remonter
+
+**Hypoxie conduite**
+sortie
+reanimation
+oxygenotherapie
+
+**Narcose N2 seuils**
+30m | 40m | 60m = 5.6bar
+debut | tous | danger
+
+**Narcose facteurs**
+Personnel
+forme
+stress
+effort
+profondeur
+visibilité
+tête en bas
+froid.
+
+**Narcose symptomes**
+Euphorie
+oppression
+dialogue intérieur
+problèmes de mémoire
+champ visuel réduit.
+--
+Lenteur
+réponse inadaptée
+agitation
+prostration
+incohérence.
+
+**Narcose conduite**
+Assistance immédiate
+remonter quelques mètres
+ne pas redescendre
+IPD
+
+**Narcose prevention**
+Descendes progressives
+tête en haut
+pas de bascule
+vérifier tous les 10m à partir de 25m
+surveiller Coéquipier
+pas d'effort
+plonger profondes progressivement
+
+---
+## ADD
+**ADD intro**
+Formation de bulle N2 dans l'organisme
+60% des ADD a + de 40 mètres
+70% des accidents graves
+1 sur 10 000 plongées
+80% des ADD avec procédure OK
+50 ans 50 mètres 50 kg juin N3 N4
+Embolie égale blocage vaisseau
+
+**FOP**
+Foramen Ovale Permeable
+sang -> corps au lei poumons
+Cause: respi bloquee, effort
+
+**localisation bulles**
+bends= articulation
+puce et mouton =peau
+oreille 
+bulle vasculaire circulante = ralentissement du sang
+vasculaire stagnante = manchon
+localisation veineuse = moelle épinière / poumon
+artérielle = AVC / oreille interne
+
+**ADD gravité 1 et 2**
+1 : Mineur, fatigue, peau, douleur articulaire, musculaire, douze 24 heures.
+2 : Majeur
+Neuros 40% médulaire
+Cérébro 5%
+Labyrinthique 25%
+Cardio respiratoire
+Symptômes en une heure, 85%
+
+Symptômes: neurovertiges, nausée, gène respiratoire, médulaire, coup de poignard
+
+**ADD facteurs**
+Q = prof * sqrt T : 30min@60m = proba ADD 1/10
+
+Autres facteurs : 
+pannne d'air
+mauvaise planification 
+ordinateur mal réglé
+effort
+facteur individuel age poids stress 
+profil à risque : plus de deux plongées, yo yo, trop près de la courbe de sécurité vitesse de remontée, palier raté
+froid
+
+
+**ADD conduite**
+Prévenir le DP
+sortie
+pas de réimmersion
+oxygène 15 litres minute
+réanimation
+secours
+donner de l'eau
+couverture
+fiche évacuation
+surveiller la balanquée.
+
+**ADD prévention**
+AVANT
+Planification
+bien équipé chaud
+bien hydraté
+nitrox
+
+PENDANT
+Respecter la planif
+pas d'effort
+pas d'apnée
+pas de val salva à la montée. Après
+
+APRES
+boire
+pas d'apnée
+pas d'avion en 24 heures
+
+RESUME:
+Adapter au contexte : santé / météo / pas de performance / savoir renoncer
+l'ordine n'est qu'une aide
+observer les coéquipiers
+attention au déni
+dans le doute agir
+
+---
+## Désaturation
+
+**Defintion gradient, tension et modèle de désaturation**
+Gradient : différence de pression entre deux milieux
+tension : pression exercée par les gaz dissous sur un liquide ou un tissu.
+modèle de désaturation :  Modèle mathématique qui décrit l'élimination des gaz inertes dissous afin de prévenir les ADD.
+
+**Haldane**
+108 premieres tables
+5 compartiments
+demi vies
+Coef_sat = T_N2 / Pabs a des limites
+
+**Buhlmann**
+Pression alveolaire 6% H2O
+ZHL  16C
+M-values 
+Gradiant facors bas/haut
+
+**Autre modeles**
+VPM (bulles, paliers profond, ne pas utiliser)
+RGBM hypbrid
+MN90 12h avt avion mini (24h mieux), Haldanien 12 compartiments
+
+**Ordinateurs: procedure**
+Obligatoire pour l'autonomie
+planification en fonction du plus contraignant
+communiquer les réglages avant
+communiquer la désaturation pendant
+respecter le plan
+pas de profil à risque
+respecter la vitesse de remontée et les paliers
+majorer si des problèmes
+respecter le palier optionnel des coéquipiers.
+
+**ORdianteurs limites**
+Bien connaître, personnel, théorique,
+panne et blocage possible,
+profil à risque et remontée rapide pas interdits
+pas de surpénalisation plongee successive
+
+**Procédure suite à remonter rapide FFESSM**
+Moins de 3 minutes en surface
+retour à mi-profondeur 5 minutes
+palier à minima: 1'@6m, 5'@3m.
+
+---
+## Plannification
+**Pourquoi planification?**
+N3 = plongée profonde,
+moins d'air
+long palier
+temps de réaction plus longue narcose
+environnement plus rigoureux
+==> prévoir l'imprévu
+==> planification indispensable.
+
+**Choix du site.**
+Règles locales
+distance de la côte
+caractéristiques et point de repère
+aptitude
+carte utiles
+
+**Eléments de planification**
+Ordres DP et/ou code du sport
+choix du site
+choix profil parcours palier
+matériel complet?
+environnement: météo, courant, marée, visibilité.
+
+**Critère de fin?**
+- désaturation: DTR
+- autonomie air: pression décollage
+- temps au fond
+
+un des trois ==> fin
+
+**Critère de fin personnels?**
+âge forme antécédent
+Point de vigilance :oreille froid?
+plongée antérieure: Expérience
+Humeur Stress Motivation 
+Matériel
+Ordinateur Réglages
+Choix du Gaz
+
+**Pendat la plongée**
+suivre le plan
+noter les critères sur des tablettes possibles
+communication
+
+si imprévu==> réduire les paramètres ou remonter
+
+---
+## Materiel
+**Matériel obligatoire**
+bouteille manomètre
+gilets permettant de remonter et de se maintenir en surface
+dispositif pour partager l'air sans partage d'embout octopus
+dispositif pour contrôler characteristique plongée et la remontee ordinateur ou tables
+1 parachute un par palanquée.
+
+**Blocs**
+8-18L
+200-300bar
+
+**Detendeurs**
+HP ->MP (P_amb+10bar) -> BP (P_amb)
+Premier étage et deuxième étage peuvent être compensés.

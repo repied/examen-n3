@@ -23,48 +23,51 @@
         </div>
     </div>
 
-    <h1>Examen N3</h1>
-    <div class="progress" id="progress">
-        <div class="progress__info">
-            <select id="deckSelect" class="progress-select"
-                style="border: 1px solid #ccc; border-radius: 4px; font-size: inherit; color: inherit; background: transparent; padding: 2px;">
-                <option value="all">PP (toutes)</option>
-                <option value="important">PP (élimi)</option>
-                <option value="pierre">GSP</option>
-            </select>
-            <select id="topicSelect" class="progress-select"
-                style="border: 1px solid #ccc; border-radius: 4px; font-size: inherit; color: inherit; background: transparent; padding: 2px;">
-                <option value="__all_topics__">Tous les thèmes</option>
-            </select>
-            <span style="margin: 0 4px;">|</span>
-            <input type="number" id="cardIndexInput" min="1" value="1"
-                style="width: 35px; text-align: center; border: 1px solid #ccc; border-radius: 4px; font-size: inherit; color: inherit; background: transparent;">
-            / <span id="totalCards">0</span>
-        </div>
-        <div class="progress__controls" aria-hidden="false">
-            <button type="button" class="prevBtn" aria-label="Précédent">◀</button>
-            <button type="button" class="randomBtn" aria-label="Aléatoire">🎲</button>
-            <button type="button" class="nextBtn" aria-label="Suivant">▶</button>
-        </div>
-    </div>
-
-    <div class="scene">
-        <div class="card" id="card">
-            <div class="card__face card__face--front" id="front-text">
-                Chargement...
+    <main class="app-container">
+        <h1>Examen N3</h1>
+        <div class="progress" id="progress">
+            <div class="progress__info">
+                <select id="deckSelect" class="progress-select"
+                    style="border: 1px solid #ccc; border-radius: 4px; font-size: inherit; color: inherit; background: transparent; padding: 2px;">
+                    <option value="all">PP (toutes)</option>
+                    <option value="important">PP (élimi)</option>
+                    <option value="pierre">GSP</option>
+                </select>
+                <select id="topicSelect" class="progress-select"
+                    style="border: 1px solid #ccc; border-radius: 4px; font-size: inherit; color: inherit; background: transparent; padding: 2px;">
+                    <option value="__all_topics__">Tous les thèmes</option>
+                </select>
+                <span style="margin: 0 4px;">|</span>
+                <input type="number" id="cardIndexInput" min="1" value="1"
+                    style="width: 35px; text-align: center; border: 1px solid #ccc; border-radius: 4px; font-size: inherit; color: inherit; background: transparent;">
+                / <span id="totalCards">0</span>
             </div>
-            <div class="card__face card__face--back" id="back-text">
-                ...
+            <div class="progress__controls" aria-hidden="false">
+                <button type="button" class="prevBtn" aria-label="Précédent">◀</button>
+                <button type="button" class="randomBtn" aria-label="Aléatoire">🎲</button>
+                <button type="button" class="nextBtn" aria-label="Suivant">▶</button>
             </div>
-
-            <!-- Controls are outside the faces so they are always on top and move with the card -->
-
         </div>
-    </div>
 
-    <footer class="footer">
-        <button id="showCoursBtn" class="footer__link">📚 Cours PDF</button>
-    </footer>
+        <div class="scene">
+            <div class="card" id="card">
+                <div class="card__face card__face--front" id="front-text">
+                    Chargement...
+                </div>
+                <div class="card__face card__face--back" id="back-text">
+                    ...
+                </div>
+
+                <!-- Controls are outside the faces so they are always on top and move with the card -->
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <button id="showCoursBtn" class="footer__link">Cours PDF</button>
+        </footer>
+
+    </main>
 
     <div id="coursModal" class="modal" style="display: none;">
         <div class="modal__panel">
